@@ -44,7 +44,8 @@ INSTALLED_APPS = [
 
 MY_CUSTOM_APPS = [
     'blackbox.core',
-    'blackbox.client_config'
+    'blackbox.client_config',
+    'blackbox.cms',
 ]
 
 # Sum up my custom apps
