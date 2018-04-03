@@ -1,4 +1,4 @@
-## SuperSoft Base System
+## Mini CMS
 
 #### Dependencies
 - Python 3.5+

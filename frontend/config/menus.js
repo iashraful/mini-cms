@@ -1,13 +1,10 @@
-import HelloWorld from '@/components/HelloWorld'
+import Home from '@/components/Home'
 import Login from '@/components/authentications/Login'
 import Logout from '@/components/authentications/Logout'
-import About from '@/components/about/About'
-import Contact from '@/components/about/Contact'
 import Settings from '@/components/settings/Settings'
 import ProfileSettings from '@/components/settings/ProfileSettings'
 import AppConfigSettings from '@/components/settings/AppConfigSettings'
 import NotFound from '@/components/utils/common/NotFound'
-import UITest from '@/components/utils/ui/UITest'
 
 
 const menuItems = [
@@ -15,7 +12,7 @@ const menuItems = [
         name: 'Home',
         path: '/',
         identifier: 'app-home',
-        component: HelloWorld,
+        component: Home,
         submenus: [],
         dropdown_items: [],
         is_dropdown: false,
@@ -60,30 +57,6 @@ const menuItems = [
         auth: true
     },
     {
-        name: 'About',
-        path: '/about',
-        identifier: 'app-about',
-        component: About,
-        submenus: [],
-        dropdown_items: [],
-        is_dropdown: false,
-        is_hidden: false,
-        is_main_menu: true,
-        auth: true
-    },
-    {
-        name: 'Contact',
-        path: '/contact',
-        identifier: 'app-contract',
-        component: Contact,
-        submenus: [],
-        dropdown_items: [],
-        is_dropdown: false,
-        is_hidden: false,
-        is_main_menu: true,
-        auth: true
-    },
-    {
         name: 'Login',
         path: '/login',
         identifier: 'app-login',
@@ -116,17 +89,6 @@ const menuItems = [
         is_hidden: true,
         is_main_menu: false,
         auth: false
-    },
-    {
-        name: 'UITest',
-        path: '/ui-test',
-        identifier: 'app-ui-test',
-        component: UITest,
-        submenus: [],
-        is_dropdown: false,
-        is_hidden: false,
-        is_main_menu: true,
-        auth: true
     },
 
 ];
