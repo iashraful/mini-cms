@@ -1,0 +1,2 @@
+DEBUG = True / False
+FORCE_STATIC_FILE_SERVING = True / False

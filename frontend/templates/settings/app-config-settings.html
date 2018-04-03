@@ -1,0 +1,34 @@
+<div class="app-config-settings">
+    <div class="row">
+        <!-- UPDATE LOGO START -->
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="logo-update card">
+                <div class="card-header">
+                    <p class="head-3">Project Logo</p>
+                    <app-alert
+                            :status="logoResponse.status"
+                            :message="logoResponse.message"
+                            v-show="logoResponse.alert">
+                    </app-alert>
+                </div>
+                <div class="card-body">
+                    <!-- Input File  -->
+                    <input type="file" accept="image/*"
+                           class="form-control-file" required
+                           @change="previewImage($event.target.files[0])"/>
+                    <!-- Image Preview -->
+                    <img :src="logoFile" style="max-width: 260px" class="img-fluid mt-2"/>
+                </div>
+                <div class="card-footer">
+                    <!-- Upload Button -->
+                    <button class="btn btn-outline-success btn-block" v-on:click="uploadLogo">Upload</button>
+                </div>
+            </div>
+        </div>
+        <!-- UPDATE LOGO END -->
+    </div>
+
+    <div class="sync-menu">
+        <sync-menu/>
+    </div>
+</div>

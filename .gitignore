@@ -1,0 +1,15 @@
+.idea
+*.pyc
+*.sqlite3
+__pycache__
+.vscode
+.DStore
+webpack-stats.json
+static/dist/*
+package-lock.json
+node_modules
+db_config.py
+debug.py
+media
+static_media
+static_root

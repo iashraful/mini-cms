@@ -1,0 +1,39 @@
+.app-body {
+    margin-left: 15% !important; /* Same as the width of the sidenav */
+    padding: 2rem 10px !important;
+}
+
+.router-link-active {
+    background-color: #4CAF50;
+    color: white !important;
+}
+
+.head-2 {
+    width: 100%;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.head-3 {
+    width: 100%;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+/* Table CSS */
+.global-search {
+    position: relative;
+    padding-left: 35px;
+    float: right;
+}
+
+.wd-200px {
+    width: 200px !important;
+}
+
+.action-table-btn-sz {
+    width: 50px;
+    padding: 0 !important;
+}
