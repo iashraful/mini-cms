@@ -3,6 +3,7 @@ import uuid
 from django.db import models
 
 from blackbox.cms.enums.content_enums import ContentTypeEnum
+from blackbox.cms.enums.view_enums import ViewTypeEnum
 from blackbox.core.models import BaseEntity
 
 __author__ = 'Ashraful'
@@ -27,4 +28,9 @@ class Content(BaseEntity):
 
 
 class ContentData(BaseEntity):
-    content = models.ForeignKey('cms.Content', )
+    content = models.ForeignKey('cms.Content', on_delete=models.SET_NULL, null=True, related_name='content_data')
+    key = models.CharField(max_length=128)
+    value = models.CharField(max_length=128)
+
+    class Meta:
+        app_label = 'cms'
