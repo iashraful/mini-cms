@@ -67,7 +67,7 @@
                         name: menus[i].name
                     })
                 }
-                if(!menus[i].is_hidden && menus[i].is_main_menu && menus[i].auth) {
+                if(!menus[i].is_hidden && menus[i].is_main_menu) {
                     this.navItems.push({
                         path: menus[i].path,
                         name: menus[i].name

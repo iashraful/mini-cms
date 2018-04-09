@@ -76,7 +76,7 @@ const menuItems = [
         submenus: [],
         is_dropdown: false,
         is_hidden: false,
-        is_main_menu: false,
+        is_main_menu: true,
         auth: true
     },
     {

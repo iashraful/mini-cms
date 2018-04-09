@@ -1,5 +1,5 @@
 <template>
-    <div class="m-4">
+    <div>
         <form class="form-signin" v-on:submit.prevent="loginFormSubmit" v-show="!isAuth">
             <h2 class="form-signin-heading">Please sign in</h2>
             <label class="sr-only">Username</label>

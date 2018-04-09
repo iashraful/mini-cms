@@ -1,11 +1,8 @@
 <template>
     <div id="app">
-        <top-nav-bar v-show="isAuth"/>
-        <side-nav-bar v-show="isAuth"/>
-        <public-content>
-            <login slot="public-content"/>
-        </public-content>
-        <app-content v-show="isAuth">
+        <top-nav-bar/>
+        <side-nav-bar v-if="isAuth"/>
+        <app-content>
             <router-view slot="main-content"/>
             <app-footer slot="main-content"/>
         </app-content>
