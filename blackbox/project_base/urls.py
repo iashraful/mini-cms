@@ -9,6 +9,7 @@ urlpatterns = [
     path('', index),
     path('api/', include('blackbox.core.urls')),
     path('api/', include('blackbox.client_config.urls')),
+    path('api/', include('blackbox.cms.urls')),
     path('admin/', admin.site.urls),
 ]
 

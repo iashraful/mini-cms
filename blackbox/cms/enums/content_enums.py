@@ -10,3 +10,4 @@ class ContentTypeEnum(enum.Enum):
     Chart = 40
     Custom = 50
     Tab = 60
+    Plain = 100

@@ -3,7 +3,6 @@ import uuid
 from django.db import models
 
 from blackbox.cms.enums.content_enums import ContentTypeEnum
-from blackbox.cms.enums.view_enums import ViewTypeEnum
 from blackbox.core.models import BaseEntity
 
 __author__ = 'Ashraful'
@@ -19,7 +18,7 @@ class Page(BaseEntity):
 
 
 class Content(BaseEntity):
-    type = models.IntegerField(default=ContentTypeEnum.Table.value)
+    type = models.IntegerField(default=ContentTypeEnum.Plain.value)
     identifier = models.CharField(max_length=64, default=uuid.uuid4(), unique=True)
     order = models.IntegerField(default=1)
 
