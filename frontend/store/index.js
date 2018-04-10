@@ -10,6 +10,9 @@ const state = {
     isAuthenticated: localStorage.getItem("auth") === "true",
     appLogo: "",
     token: localStorage.getItem("token") || "",
+    pages: [
+        {id: 1, name: 'Test Page', path: 'test-page'},
+    ]
 };
 
 export default new Vuex.Store({

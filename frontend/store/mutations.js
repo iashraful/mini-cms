@@ -12,4 +12,8 @@ export default {
     [mutationTypes.updateLogo](state, payload) {
         state.appLogo = payload.logo;
     },
+
+    [mutationTypes.addPage](state, page) {
+        state.pages.push(page);
+    },
 }
