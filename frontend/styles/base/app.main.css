@@ -1,10 +1,10 @@
 .app-body-sidebar {
     margin-left: 15% !important; /* Same as the width of the sidenav */
-    padding: 3.5rem 10px !important;
+    padding: 10px !important;
 }
 
 .app-body {
-    padding: 3.5rem 10px !important;
+    padding: 10px !important;
 }
 
 .router-link-active {

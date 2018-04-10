@@ -1,4 +1,9 @@
-<template src="../../templates/navbars/side-nav-bar.html"></template>
+<template>
+    <div class="sidenav">
+        <router-link v-for="item in navItems" v-bind:to="item.path">{{ item.name }}</router-link>
+        <router-link class="menu-footer" to="/logout">Logout</router-link>
+    </div>
+</template>
 
 <script>
     import menuStore from '@/store/menu-store/menu-store'

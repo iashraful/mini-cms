@@ -3,9 +3,9 @@
     width: 15%;
     position: fixed;
     left: 0;
-    background-color: #111;
+    background-color: #343a40 !important;
     overflow-x: hidden;
-    padding-top: 3.5rem;
+    padding-top: 2px;
 }
 
 .sidenav a {

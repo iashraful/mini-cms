@@ -1,4 +1,35 @@
-<template src="../../templates/navbars/top-nav-bar.html"></template>
+<template>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/#/">MiNi CMS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+                aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active" v-for="item in navItems">
+                    <router-link class="nav-link" v-bind:to="item.path"> {{ item.name }}</router-link>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</template>
 
 <script>
     import menuStore from '@/store/menu-store/menu-store'
@@ -61,13 +92,13 @@
             }
             for (let i = 0; i < menuStore.state.menu.length; i++) {
                 const menus = menuStore.state.menu;
-                if(menus[i].is_dropdown) {
+                if (menus[i].is_dropdown) {
                     this.dropdownItems.push({
                         path: menus[i].path,
                         name: menus[i].name
                     })
                 }
-                if(!menus[i].is_hidden && menus[i].is_main_menu) {
+                if (!menus[i].is_hidden && menus[i].is_main_menu) {
                     this.navItems.push({
                         path: menus[i].path,
                         name: menus[i].name
@@ -81,4 +112,8 @@
     }
 </script>
 
-<style scoped src="../../styles/navbars/top-nav-bar.css"></style>
+<style scoped>
+    .navbar {
+        padding: 0 10px 0 10px !important;
+    }
+</style>
