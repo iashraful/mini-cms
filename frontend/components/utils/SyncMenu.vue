@@ -5,7 +5,6 @@
 </template>
 
 <script>
-    import menuStore from '@/store/menu-store/menu-store'
     import * as mutationTypes from '@/store/mutations-types'
 
     export default {
@@ -13,7 +12,7 @@
         methods: {
             syncMenu() {
                 console.log("Syncing Menu Items...");
-                const menus = menuStore.state.menu;
+                const menus = this.$store.state.menus;
                 let menuGroup = [];
                 for (let i = 0; i < menus.length; i++) {
                     let eachMenu = {
@@ -71,7 +70,7 @@
                     menuGroup.push(eachMenu);
                 }
                 if (menuGroup.length > 0) {
-                    menuStore.commit(mutationTypes.syncMenuItems, menuGroup)
+                    this.$store.commit(mutationTypes.syncMenuItems, menuGroup)
                 }
             }
         }

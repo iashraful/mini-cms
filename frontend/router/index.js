@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import menuStore from '@/store/menu-store/menu-store'
+import store from '@/store/index'
 
 Vue.use(Router);
 
 let routes = [];
-for (let i = 0; i < menuStore.state.menu.length; i++) {
-    const menus = menuStore.state.menu;
+for (let i = 0; i < store.state.menus.length; i++) {
+    const menus = store.state.menus;
     let route = {
         path: menus[i].path,
         name: menus[i].name,

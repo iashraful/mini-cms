@@ -36,7 +36,6 @@
 </template>
 
 <script>
-    import menuStore from '@/store/menu-store/menu-store'
     import * as mutationTypes from '@/store/mutations-types'
     import store from '@/store/index'
     import axios from 'axios'
@@ -54,23 +53,6 @@
             }
         },
         methods: {
-            toggleNavbar() {
-                let x = document.getElementById("myTopnav");
-                let s = document.getElementById("top-nav-search");
-                if (x.className === "topnav") {
-                    x.className += " responsive";
-                } else {
-                    x.className = "topnav";
-                }
-                if (s.className === "search-area") {
-                    s.className += " responsive";
-                } else {
-                    s.className = "search-area";
-                }
-            },
-            searchSubmit() {
-                console.log(this.searchQuery)
-            },
             getLogo() {
                 const url = "/api/app-logo/";
                 const payload = {
@@ -85,6 +67,23 @@
                 }).catch((err) => {
                     console.log(err)
                 })
+            },
+            menuManager() {
+                for (let i = 0; i < this.$store.state.menus.length; i++) {
+                    const menus = this.$store.state.menus;
+                    if (menus[i].is_dropdown) {
+                        this.dropdownItems.push({
+                            path: menus[i].path,
+                            name: menus[i].name
+                        })
+                    }
+                    if (!menus[i].is_hidden && menus[i].is_main_menu) {
+                        this.navItems.push({
+                            path: menus[i].path,
+                            name: menus[i].name
+                        })
+                    }
+                }
             }
         },
         created() {
@@ -96,21 +95,11 @@
             if (store.state.isAuthenticated) {
                 this.getLogo();
             }
-            for (let i = 0; i < menuStore.state.menu.length; i++) {
-                const menus = menuStore.state.menu;
-                if (menus[i].is_dropdown) {
-                    this.dropdownItems.push({
-                        path: menus[i].path,
-                        name: menus[i].name
-                    })
-                }
-                if (!menus[i].is_hidden && menus[i].is_main_menu) {
-                    this.navItems.push({
-                        path: menus[i].path,
-                        name: menus[i].name
-                    })
-                }
-            }
+            // Generate menu
+            this.menuManager();
+            this.$bus.$on('renderedPages', () => {
+                this.menuManager();
+            })
         },
         mounted() {
             // console.log(this.navItems);

@@ -8,8 +8,7 @@ import PageList from '@/components/settings/pages/PageList'
 import PageDetails from '@/components/settings/pages/PageDetails'
 import NotFound from '@/components/utils/common/NotFound'
 
-
-const menuItems = [
+let menuItems = [
     {
         name: 'Home',
         path: '/',

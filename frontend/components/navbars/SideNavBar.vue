@@ -5,8 +5,6 @@
 </template>
 
 <script>
-    import menuStore from '@/store/menu-store/menu-store'
-
     export default {
         name: "side-nav-bar",
         data() {
@@ -21,8 +19,8 @@
         },
         methods: {
             updateChildRoutes(currentRouteName) {
-                for (let i = 0; i < menuStore.state.menu.length; i++) {
-                    const menus = menuStore.state.menu;
+                for (let i = 0; i < this.$store.state.menus.length; i++) {
+                    const menus = this.$store.state.menus;
                     if (menus[i].submenus.length > 0) {
                         const parentPath = menus[i].path;
                         if (menus[i].name === currentRouteName) {

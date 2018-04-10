@@ -20,4 +20,13 @@ export default {
     [mutationTypes.getPages](state, pages) {
         state.pages = pages;
     },
+
+    [mutationTypes.updateRoutes](state, routes) {
+        state.routes = routes;
+    },
+
+    [mutationTypes.updateMenuItems](state, menus) {
+        state.menus = menus;
+    },
+
 }
