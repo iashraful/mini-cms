@@ -42,8 +42,8 @@
             convertToSlug(text) {
                 return text
                     .toLowerCase()
-                    .replace(/[^\w-]+/g, '')
-                    .replace(/ /g, '-');
+                    .replace(/[^\w ]+/g, '')
+                    .replace(/ +/g, '-');
             }
         },
         watch: {

@@ -10,6 +10,16 @@ export default {
             method: 'GET',
             headers: HEADERS
         };
-        return fetch(apiUrl, payload).then(response => {response.json()});
+        return fetch(apiUrl, payload).then(response => response.json());
+    },
+
+    postPage(data) {
+        const apiUrl = 'api/pages/';
+        const payload = {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: HEADERS
+        };
+        return fetch(apiUrl, payload).then(response => response.json());
     }
 }

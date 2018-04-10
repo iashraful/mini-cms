@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import mutations from './mutations'
 import actions from './actions'
+import getters from './getters'
 
 Vue.use(Vuex);
 
@@ -11,13 +12,12 @@ const state = {
     isAuthenticated: localStorage.getItem("auth") === "true",
     appLogo: "",
     token: localStorage.getItem("token") || "",
-    pages: [
-        {id: 1, name: 'Test Page', path: 'test-page'},
-    ]
+    pages: []
 };
 
 export default new Vuex.Store({
     state,
+    getters,
     actions,
     mutations,
 })
