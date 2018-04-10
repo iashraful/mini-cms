@@ -52,7 +52,7 @@ const menuItems = [
             }
         ],
         is_dropdown: false,
-        is_hidden: false,
+        is_hidden: true,
         is_main_menu: true,
         auth: true
     },
@@ -64,7 +64,7 @@ const menuItems = [
         submenus: [],
         dropdown_items: [],
         is_dropdown: false,
-        is_hidden: false,
+        is_hidden: true,
         is_main_menu: true,
         auth: false
     },
@@ -75,7 +75,7 @@ const menuItems = [
         component: Logout,
         submenus: [],
         is_dropdown: false,
-        is_hidden: false,
+        is_hidden: true,
         is_main_menu: true,
         auth: true
     },

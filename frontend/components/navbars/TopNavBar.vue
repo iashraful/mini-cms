@@ -12,18 +12,22 @@
                     <router-link class="nav-link" v-bind:to="item.path"> {{ item.name }}</router-link>
                 </li>
             </ul>
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto" v-if="!isAuth">
+                <li class="nav-item active">
+                    <router-link class="nav-link" to="/login">Login</router-link>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto" v-if="isAuth">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
-                        Dropdown
+                        <img src="/static/img/no-user-image.png" width="25" class="rounded-circle"/>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <router-link class="dropdown-item" to="/me">Profile</router-link>
+                        <router-link class="dropdown-item" to="/settings">Settings</router-link>
+                        <router-link class="dropdown-item" to="/logout">Logout</router-link>
                     </div>
                 </li>
             </ul>
@@ -42,9 +46,11 @@
         data() {
             return {
                 searchQuery: "",
+                isAuth: this.$store.state.isAuthenticated,
                 topNavLogo: store.state.appLogo,
                 navItems: [],
-                dropdownItems: []
+                dropdownItems: [],
+                loggedInUser: 'Test User'
             }
         },
         methods: {
