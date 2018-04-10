@@ -20,6 +20,13 @@ export default {
             body: JSON.stringify(data),
             headers: HEADERS
         };
-        return fetch(apiUrl, payload).then(response => response.json());
+        return fetch(apiUrl, payload).then((response) => {
+            let json = response.json();
+            if (response.status === 201) {
+                return json;
+            } else {
+                return json.then(Promise.reject.bind(Promise));
+            }
+        });
     }
 }

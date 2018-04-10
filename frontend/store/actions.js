@@ -5,9 +5,12 @@ export default {
     addNewPage(context, page) {
         return new Promise((success, fail) => {
             pagesApi.postPage(page).then((response) => {
-                console.log(response);
-                context.commit(mutationTypes.addPage, response);
-                success();
+                if (response.id) {
+                    context.commit(mutationTypes.addPage, response);
+                    success();
+                }
+            }, (error) => {
+                fail(error)
             });
         })
     },

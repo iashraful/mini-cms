@@ -4,8 +4,14 @@
         <h1>Page List</h1>
         <div class="row">
             <form v-on:submit.prevent="handleSubmit">
-                Page Title: <input v-model="page.name"/>
-                Page Path: <input v-model="page.path"/>
+                <label>Page Title</label>
+                <input v-model="page.name"/>
+                <p v-if="errorData.name !== undefined" class="alert-danger">{{errorData.name[0]}}</p>
+                <br/>
+                <label>Page Path</label>
+                <input v-model="page.path"/>
+                <p v-if="errorData.path !== undefined" class="alert-danger">{{errorData.path[0]}}</p>
+                <br/>
                 <button>Add Page</button>
             </form>
         </div>
@@ -28,15 +34,19 @@
                     name: '', path: ''
                 },
                 showAlert: false,
-                alertMgs: ''
+                alertMgs: '',
+                errorData: {},
             }
         },
         methods: {
             handleSubmit() {
                 this.$store.dispatch('addNewPage', this.page).then(() => {
                     this.page = {name: '', path: ''};
+                    this.errorData = {};
                     this.showAlert = true;
                     this.alertMgs = 'Page created successfully';
+                }, (err) => {
+                    this.errorData = err;
                 })
             },
             convertToSlug(text) {
@@ -48,10 +58,9 @@
         },
         watch: {
             ['page.name'](newVal, oldVal) {
-                let slugPath = this.convertToSlug(newVal);
-                this.page['path'] = slugPath;
+                this.page['path'] = this.convertToSlug(newVal);
             }
-        }
+        },
     }
 </script>
 
