@@ -16,4 +16,8 @@ export default {
     [mutationTypes.addPage](state, page) {
         state.pages.push(page);
     },
+
+    [mutationTypes.getPages](state, pages) {
+        state.pages = pages;
+    },
 }
