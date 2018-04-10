@@ -1,7 +1,7 @@
 .sidenav {
     height: 100%;
     width: 15%;
-    position: fixed;
+    position: absolute;
     left: 0;
     background-color: #343a40 !important;
     overflow-x: hidden;

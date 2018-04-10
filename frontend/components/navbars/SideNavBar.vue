@@ -1,7 +1,6 @@
 <template>
     <div class="sidenav">
         <router-link v-for="item in navItems" v-bind:to="item.path">{{ item.name }}</router-link>
-        <router-link class="menu-footer" to="/logout">Logout</router-link>
     </div>
 </template>
 
@@ -25,18 +24,19 @@
                 for (let i = 0; i < menuStore.state.menu.length; i++) {
                     const menus = menuStore.state.menu;
                     if (menus[i].submenus.length > 0) {
+                        const parentPath = menus[i].path;
                         if (menus[i].name === currentRouteName) {
                             const subMenus = menus[i].submenus;
                             for (let s = 0; s < subMenus.length; s++) {
                                 if (subMenus[s].is_dropdown) {
                                     this.dropdownItems.push({
-                                        path: subMenus[s].path,
+                                        path: parentPath + '/' + subMenus[s].path,
                                         name: subMenus[s].name
                                     })
                                 }
                                 if (!subMenus[s].is_hidden && !subMenus[s].is_main_menu) {
                                     this.navItems.push({
-                                        path: subMenus[s].path,
+                                        path: parentPath + '/' + subMenus[s].path,
                                         name: subMenus[s].name
                                     })
                                 }

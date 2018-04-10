@@ -4,6 +4,8 @@ import Logout from '@/components/authentications/Logout'
 import Settings from '@/components/settings/Settings'
 import ProfileSettings from '@/components/settings/ProfileSettings'
 import AppConfigSettings from '@/components/settings/AppConfigSettings'
+import PageList from '@/components/settings/pages/PageList'
+import PageDetails from '@/components/settings/pages/PageDetails'
 import NotFound from '@/components/utils/common/NotFound'
 
 
@@ -39,6 +41,30 @@ const menuItems = [
                 auth: true
             },
             {
+                name: 'Pages',
+                path: 'pages',
+                identifier: 'app-settings-page-list',
+                component: PageList,
+                submenus: [],
+                dropdown_items: [],
+                is_dropdown: false,
+                is_hidden: false,
+                is_main_menu: false,
+                auth: true
+            },
+            {
+                name: 'Page Details',
+                path: 'pages/:id',
+                identifier: 'app-settings-page-details',
+                component: PageDetails,
+                submenus: [],
+                dropdown_items: [],
+                is_dropdown: false,
+                is_hidden: true,
+                is_main_menu: false,
+                auth: true
+            },
+            {
                 name: 'App Config',
                 path: 'app-config',
                 identifier: 'app-settings-config',
@@ -46,7 +72,7 @@ const menuItems = [
                 submenus: [],
                 dropdown_items: [],
                 is_dropdown: false,
-                is_hidden: false,
+                is_hidden: true,
                 is_main_menu: false,
                 auth: true
             }
