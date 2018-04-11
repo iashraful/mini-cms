@@ -14,6 +14,14 @@ class ContentSerializer(serializers.ModelSerializer):
 class PageSerializer(serializers.ModelSerializer):
     contents = ContentSerializer(many=True, read_only=True)
 
+    def validate(self, attrs):
+        path = attrs.get('path')
+        if path and path[0] != '/':
+            path = '/' + path
+            attrs['path'] = path
+            return attrs
+        return attrs
+
     class Meta:
         model = Page
         fields = '__all__'
