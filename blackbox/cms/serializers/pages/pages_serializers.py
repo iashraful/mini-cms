@@ -25,3 +25,4 @@ class PageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Page
         fields = '__all__'
+        lookup_field = 'path'

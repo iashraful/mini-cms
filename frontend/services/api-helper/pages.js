@@ -1,6 +1,5 @@
 const HEADERS = {
-    'Content-Type': 'application/json',
-    'Authorization': 'Token ' + localStorage.getItem('token')
+    'Content-Type': 'application/json'
 };
 
 export default {
@@ -28,5 +27,14 @@ export default {
                 return json.then(Promise.reject.bind(Promise));
             }
         });
+    },
+
+    getPageDetails(path) {
+        const apiUrl = 'api/pages/' + path + '/';
+        const payload = {
+            method: 'GET',
+            headers: HEADERS
+        };
+        return fetch(apiUrl, payload).then(response => response.json());
     }
 }

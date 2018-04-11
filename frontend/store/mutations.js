@@ -28,4 +28,8 @@ export default {
     [mutationTypes.updateMenuItems](state, menus) {
         state.menus = menus;
     },
+
+    [mutationTypes.getPageDetails](state, page) {
+        state.currentPage = page;
+    },
 }

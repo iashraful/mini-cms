@@ -8,10 +8,6 @@
                 <input v-model="page.name"/>
                 <p v-if="errorData.name !== undefined" class="alert-danger">{{errorData.name[0]}}</p>
                 <br/>
-                <label>Page Path</label>
-                <input v-model="page.path"/>
-                <p v-if="errorData.path !== undefined" class="alert-danger">{{errorData.path[0]}}</p>
-                <br/>
                 <button>Add Page</button>
             </form>
         </div>
@@ -31,7 +27,7 @@
                 pages: this.$store.state.pages,
                 currentPath: this.$router.history.current.path,
                 page: {
-                    name: '', path: ''
+                    name: '',
                 },
                 showAlert: false,
                 alertMgs: '',
@@ -49,17 +45,6 @@
                 }, (err) => {
                     this.errorData = err;
                 })
-            },
-            convertToSlug(text) {
-                return text
-                    .toLowerCase()
-                    .replace(/[^\w ]+/g, '')
-                    .replace(/ +/g, '-');
-            }
-        },
-        watch: {
-            ['page.name'](newVal, oldVal) {
-                this.page['path'] = '/' + this.convertToSlug(newVal);
             }
         },
     }

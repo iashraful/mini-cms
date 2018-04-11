@@ -9,7 +9,7 @@ __author__ = 'Ashraful'
 
 
 class Page(BaseEntity):
-    name = models.CharField(max_length=32, null=True)
+    name = models.CharField(max_length=32)
     path = models.CharField(max_length=64, default=uuid.uuid4(), unique=True)
     contents = models.ManyToManyField('cms.Content')
 

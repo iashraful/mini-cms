@@ -22,5 +22,14 @@ export default {
             });
             success();
         })
+    },
+
+    getPageDetailsApiCall(context, path) {
+        return new Promise((success, fail) => {
+            pagesApi.getPageDetails(path).then((page) => {
+                context.commit(mutationTypes.getPageDetails, page);
+            });
+            success();
+        })
     }
 }

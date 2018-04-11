@@ -8,6 +8,7 @@ import menuItems from '@/config/menus'
 Vue.use(Vuex);
 
 const state = {
+    appName: localStorage.getItem("appName") || 'MiNi CMS',
     count: 0,
     loginDetails: {},
     menus: menuItems,
@@ -16,6 +17,7 @@ const state = {
     token: localStorage.getItem("token") || "",
     pages: [],
     routes: [],
+    currentPage: {},
 };
 
 export default new Vuex.Store({
