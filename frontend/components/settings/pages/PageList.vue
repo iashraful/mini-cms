@@ -59,7 +59,7 @@
         },
         watch: {
             ['page.name'](newVal, oldVal) {
-                this.page['path'] = this.convertToSlug(newVal);
+                this.page['path'] = '/' + this.convertToSlug(newVal);
             }
         },
     }

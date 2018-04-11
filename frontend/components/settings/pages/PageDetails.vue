@@ -6,7 +6,15 @@
 
 <script>
     export default {
-        name: "page-details"
+        name: "page-details",
+        watch: {
+            '$route'(to, from) {
+                let page = this.$store.getters.getPageByPath(to.path);
+                if (page === undefined) {
+                    this.$router.push('/404')
+                }
+            }
+        }
     }
 </script>
 
