@@ -69,6 +69,8 @@
                 })
             },
             menuManager() {
+                this.dropdownItems = [];
+                this.navItems = [];
                 for (let i = 0; i < this.$store.state.menus.length; i++) {
                     const menus = this.$store.state.menus;
                     if (menus[i].is_dropdown) {

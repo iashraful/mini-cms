@@ -28,5 +28,4 @@ export default {
     [mutationTypes.updateMenuItems](state, menus) {
         state.menus = menus;
     },
-
 }

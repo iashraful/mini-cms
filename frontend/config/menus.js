@@ -52,18 +52,6 @@ let menuItems = [
                 auth: true
             },
             {
-                name: 'Page Details',
-                path: 'pages/:id',
-                identifier: 'app-settings-page-details',
-                component: PageDetails,
-                submenus: [],
-                dropdown_items: [],
-                is_dropdown: false,
-                is_hidden: true,
-                is_main_menu: false,
-                auth: true
-            },
-            {
                 name: 'App Config',
                 path: 'app-config',
                 identifier: 'app-settings-config',
@@ -115,6 +103,17 @@ let menuItems = [
         is_main_menu: false,
         auth: false
     },
-
+    {
+        name: 'Page Details',
+        path: '/:pageSlug',
+        identifier: 'app-page-details',
+        component: PageDetails,
+        submenus: [],
+        dropdown_items: [],
+        is_dropdown: false,
+        is_hidden: true,
+        is_main_menu: false,
+        auth: true
+    }
 ];
 export default menuItems;

@@ -43,6 +43,7 @@
                 this.$store.dispatch('addNewPage', this.page).then(() => {
                     this.page = {name: '', path: ''};
                     this.errorData = {};
+                    this.$bus.$emit('AddedNewPage', 'New Page Added');
                     this.showAlert = true;
                     this.alertMgs = 'Page created successfully';
                 }, (err) => {
