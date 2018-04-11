@@ -19,8 +19,9 @@ export default {
         return new Promise((success, fail) => {
             pagesApi.getPages().then((pages) => {
                 context.commit(mutationTypes.getPages, pages);
+                success(pages);
             });
-            success();
+
         })
     },
 
@@ -28,8 +29,8 @@ export default {
         return new Promise((success, fail) => {
             pagesApi.getPageDetails(path).then((page) => {
                 context.commit(mutationTypes.getPageDetails, page);
+                success(page);
             });
-            success();
         })
     }
 }
