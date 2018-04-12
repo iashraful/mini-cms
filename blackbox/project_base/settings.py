@@ -24,7 +24,7 @@ PROJECT_ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspa
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '!8ybjp%i5a29&#gg+)b6cj-8ijfokvp%prrd0#dm((t-fj=w9w'
 
-ALLOWED_HOSTS = ['localhost', 'ashrafulrobin.pythonanywhere.com', 'mrrobin.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '.mrrobin.me', 'mrobin.me', 'cms.mrrobin.me']
 
 # Application definition
 
