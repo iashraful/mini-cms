@@ -30,6 +30,8 @@ export default {
             pagesApi.getPageDetails(path).then((page) => {
                 context.commit(mutationTypes.getPageDetails, page);
                 success(page);
+            }).then((err) => {
+                fail(err)
             });
         })
     }

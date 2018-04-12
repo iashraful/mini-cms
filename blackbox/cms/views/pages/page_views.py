@@ -1,3 +1,5 @@
+import uuid
+
 from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import generics
 from rest_framework.permissions import AllowAny
@@ -21,7 +23,8 @@ class PageDetailsView(generics.RetrieveUpdateDestroyAPIView):
     def get_object(self):
         slug = self.kwargs.get('slug')
         try:
+            uuid.UUID(slug)
             _obj = Page.objects.get(path=slug)
             return _obj
-        except ObjectDoesNotExist:
-            pass
+        except (ValueError, ObjectDoesNotExist):
+            return None
