@@ -15,7 +15,7 @@
         },
         methods: {
             getPageDetails() {
-                const path = this.$router.history.current.path.substring(1);
+                const path = this.$router.history.current.path.substring(3);
                 this.$store.dispatch('getPageDetailsApiCall', path).then((response) => {
                     if (response.path !== path) {
                         this.$router.push('/404')

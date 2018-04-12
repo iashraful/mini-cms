@@ -105,7 +105,7 @@ let menuItems = [
     },
     {
         name: 'Page Details',
-        path: '/:pageSlug',
+        path: '/p/:pageSlug',
         identifier: 'app-page-details',
         component: PageDetails,
         submenus: [],

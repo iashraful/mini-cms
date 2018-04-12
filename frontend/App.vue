@@ -43,7 +43,7 @@
                 for (let i = 0; i < pages.length; i++) {
                     menuItems.push({
                         name: pages[i].name,
-                        path: '/' + pages[i].path,
+                        path: '/p/' + pages[i].path,
                         identifier: 'app-' + pages[i].path,
                         component: PageDetails,
                         submenus: [],
@@ -66,7 +66,7 @@
                 this.$store.dispatch('getPagesApiCall').then(() => {
                     setTimeout(() => {
                         this.updateDynamicPages();
-                    }, 750)
+                    }, 500)
                 });
             }
         },
