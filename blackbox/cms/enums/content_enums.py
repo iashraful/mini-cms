@@ -4,10 +4,16 @@ __author__ = 'Ashraful'
 
 
 class ContentTypeEnum(enum.Enum):
-    Table = 10
-    Card = 20
-    Graph = 30
-    Chart = 40
-    Custom = 50
-    Tab = 60
-    Plain = 100
+    Plain = 0
+    Table = 1
+    Card = 2
+    Graph = 3
+    Chart = 4
+    Custom = 5
+    Tab = 6
+
+
+class ContentStatusEnum(enum.Enum):
+    Draft = 0
+    Publish = 1
+    Archive = 2

@@ -8,21 +8,13 @@ __author__ = 'Ashraful'
 class ContentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Content
-        fields = '__all__'
+        fields = ('identifier', 'status', 'order', 'title', 'body')
 
 
 class PageSerializer(serializers.ModelSerializer):
     contents = ContentSerializer(many=True, read_only=True)
 
-    def validate(self, attrs):
-        path = attrs.get('path')
-        if path and path[0] != '/':
-            path = '/' + path
-            attrs['path'] = path
-            return attrs
-        return attrs
-
     class Meta:
         model = Page
-        fields = '__all__'
+        fields = ('name', 'path', 'contents')
         lookup_field = 'path'
