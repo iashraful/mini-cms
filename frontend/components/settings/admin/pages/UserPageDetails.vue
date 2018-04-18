@@ -1,13 +1,14 @@
 <template>
     <div>
         <h2>Welcome {{ currentPage.name }}</h2>
+        <h3>I'm Admin</h3>
         <!--<p v-if="currentPage.contents.length < 1">No Content found</p>-->
     </div>
 </template>
 
 <script>
     export default {
-        name: "page-details",
+        name: "user-page-details",
         data() {
             return {
                 currentPage: this.$store.getters.getCurrentPage
@@ -15,7 +16,7 @@
         },
         methods: {
             getPageDetails() {
-                const path = this.$router.history.current.path.substring(3);
+                const path = this.$route.params.pageSlug;
                 this.$store.dispatch('getPageDetailsApiCall', path).then((response) => {
                     if (response.path !== path) {
                         this.$router.push('/404')

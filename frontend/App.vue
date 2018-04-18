@@ -16,7 +16,7 @@
     import PublicContent from "@/components/utils/common/PublicContent";
     import Login from "@/components/authentications/Login";
     import AppFooter from "@/components/navbars/Footer";
-    import PageDetails from "@/components/settings/pages/PageDetails";
+    import PageDetails from "@/components/pages/PageDetails";
 
     import * as mutationTypes from '@/store/mutations-types'
     import configMenus from '@/config/menus'

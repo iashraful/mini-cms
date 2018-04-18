@@ -4,8 +4,9 @@ import Logout from '@/components/authentications/Logout'
 import Settings from '@/components/settings/Settings'
 import ProfileSettings from '@/components/settings/ProfileSettings'
 import AppConfigSettings from '@/components/settings/AppConfigSettings'
-import PageList from '@/components/settings/pages/PageList'
-import PageDetails from '@/components/settings/pages/PageDetails'
+import PageList from '@/components/pages/PageList'
+import PageDetails from '@/components/pages/PageDetails'
+import UserPageDetails from '@/components/settings/admin/pages/UserPageDetails'
 import NotFound from '@/components/utils/common/NotFound'
 
 let menuItems = [
@@ -48,6 +49,18 @@ let menuItems = [
                 dropdown_items: [],
                 is_dropdown: false,
                 is_hidden: false,
+                is_main_menu: false,
+                auth: true
+            },
+            {
+                name: 'Page Details',
+                path: 'pages/:pageSlug',
+                identifier: 'app-settings-page-details',
+                component: UserPageDetails,
+                submenus: [],
+                dropdown_items: [],
+                is_dropdown: false,
+                is_hidden: true,
                 is_main_menu: false,
                 auth: true
             },
