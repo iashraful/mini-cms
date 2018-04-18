@@ -1,7 +1,5 @@
 <template>
     <div>
-        <h5>{{ currentPage.name }} Contents</h5>
-        <hr class="mt-0"/>
         <h5>Add New Content</h5>
         <hr class="mt-0"/>
         <div class="mt-2 mb-4">
@@ -12,6 +10,8 @@
                 <vue-editor v-model="newContent.body"></vue-editor>
             </form>
         </div>
+        <h5>{{ currentPage.name }} Contents</h5>
+        <hr class="mt-0"/>
         <h6>1. Post Title</h6>
         <p class="text-muted mb-0">
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the

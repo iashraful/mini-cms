@@ -1,9 +1,10 @@
 .app-body-sidebar {
-    margin-left: 15% !important; /* Same as the width of the sidenav */
+    margin: 0 3% 0 18% !important; /* Same as the width of the sidenav */
     padding: 10px !important;
 }
 
 .app-body {
+    margin: 0 10% 0 10% !important;
     padding: 10px !important;
 }
 
