@@ -72,8 +72,11 @@
         },
         created() {
             this.runForFirstTime();
+        },
+        mounted() {
             // Update Menus when new page added
-            this.$bus.$on('AddedNewPage', () => {
+            this.$bus.$on('addedNewPage_EB', () => {
+                console.log('hello')
                 this.updateDynamicPages();
             })
         }

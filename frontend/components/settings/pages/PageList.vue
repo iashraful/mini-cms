@@ -37,9 +37,9 @@
         methods: {
             handleSubmit() {
                 this.$store.dispatch('addNewPage', this.page).then(() => {
-                    this.page = {name: '', path: ''};
+                    this.page = {name: ''};
                     this.errorData = {};
-                    this.$bus.$emit('AddedNewPage', 'New Page Added');
+                    this.$bus.$emit('addedNewPage_EB', 'New Page Added');
                     this.showAlert = true;
                     this.alertMgs = 'Page created successfully';
                 }, (err) => {

@@ -5,7 +5,7 @@ export default {
     addNewPage(context, page) {
         return new Promise((success, fail) => {
             pagesApi.postPage(page).then((response) => {
-                if (response.id) {
+                if (response.path) {
                     context.commit(mutationTypes.addPage, response);
                     success();
                 }
