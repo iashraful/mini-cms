@@ -32,4 +32,8 @@ export default {
     [mutationTypes.getPageDetails](state, page) {
         state.currentPage = page;
     },
+
+    [mutationTypes.saveContent](state, content) {
+        state.contents.push(content);
+    },
 }

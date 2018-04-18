@@ -1,5 +1,6 @@
 import * as mutationTypes from './mutations-types'
 import pagesApi from '@/services/api-helper/pages'
+import contentApi from '@/services/api-helper/contents'
 
 export default {
     addNewPage(context, page) {
@@ -33,6 +34,17 @@ export default {
             }).then((err) => {
                 fail(err)
             });
+        })
+    },
+
+    postNewContent(context, data) {
+        return new Promise((success, fail) => {
+            contentApi.postContent(data).then((content) => {
+                context.commit(mutationTypes.saveContent, content);
+                success(content);
+            }).then((err) => {
+                fail(err)
+            })
         })
     }
 }

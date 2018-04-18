@@ -5,11 +5,13 @@
             <h5>Add New Content</h5>
             <hr class="mt-0"/>
             <div class="mt-2 mb-4">
-                <form>
+                <form v-on:submit.prevent="onContentSubmit">
                     <label>Title</label>
-                    <input type="text" class="form-input" v-model="newContent.title"/>
+                    <input type="text" class="form-input" v-model="newContent.title" required/>
                     <label>Description</label>
                     <vue-editor v-model="newContent.body"></vue-editor>
+                    <button class="mt-2 pull-right btn btn-outline-success pl-5 pr-5">Publish</button>
+                    <br/>
                 </form>
             </div>
             <h5>{{ currentPage.name }} Contents</h5>
@@ -56,6 +58,11 @@
                     this.loading = false;
                     this.currentPage = response;
                 })
+            },
+            onContentSubmit() {
+                this.$store.dispatch('postNewContent', this.newContent).then((response) => {
+                    console.log(response)
+                })
             }
         },
         mounted() {
@@ -76,5 +83,9 @@
     .form-input {
         width: 100%;
         height: 37px;
+    }
+    
+    .pull-right {
+        float: right;
     }
 </style>

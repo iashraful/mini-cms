@@ -16,6 +16,7 @@ const state = {
     appLogo: "",
     token: localStorage.getItem("token") || "",
     pages: [],
+    contents: [],
     routes: [],
     currentPage: {},
 };

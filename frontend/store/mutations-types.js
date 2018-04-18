@@ -7,3 +7,4 @@ export  const getPages = "GET_PAGES";
 export  const updateRoutes = "UPDATE_ROUTES";
 export  const updateMenuItems = "UPDATE_MENU_ITEMS";
 export const getPageDetails = "GET_PAGE_DETAILS";
+export const saveContent = "SAVE_CONTENT";
