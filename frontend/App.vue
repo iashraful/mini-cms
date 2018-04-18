@@ -1,11 +1,16 @@
 <template>
     <div id="app">
-        <top-nav-bar/>
-        <side-nav-bar v-if="isAuth"/>
-        <app-content>
-            <router-view slot="main-content"/>
-            <app-footer slot="main-content"/>
-        </app-content>
+        <div v-if="loading" class="text-center mx-auto mt-5">
+            <img src="/static/img/loading.gif" width="150"/>
+        </div>
+        <div v-if="!loading">
+            <top-nav-bar/>
+            <side-nav-bar v-if="isAuth"/>
+            <app-content>
+                <router-view slot="main-content"/>
+                <app-footer slot="main-content"/>
+            </app-content>
+        </div>
     </div>
 </template>
 
@@ -33,7 +38,8 @@
         },
         data() {
             return {
-                isAuth: this.$store.state.isAuthenticated
+                isAuth: this.$store.state.isAuthenticated,
+                loading: true,
             }
         },
         methods: {
@@ -72,11 +78,14 @@
         },
         created() {
             this.runForFirstTime();
+            // Loading off
+            this.$bus.$on('renderedPages', () => {
+                this.loading = false;
+            })
         },
         mounted() {
             // Update Menus when new page added
             this.$bus.$on('addedNewPage_EB', () => {
-                console.log('hello')
                 this.updateDynamicPages();
             })
         }

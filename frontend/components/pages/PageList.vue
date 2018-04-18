@@ -47,6 +47,11 @@
                 })
             }
         },
+        created() {
+            this.$bus.$on('renderedPages', () => {
+                this.pages = this.$store.state.pages;
+            })
+        }
     }
 </script>
 
