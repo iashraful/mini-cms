@@ -1,7 +1,17 @@
 <template>
     <div>
-        <h5>{{ currentPage.name }}</h5>
+        <h5>{{ currentPage.name }} Contents</h5>
         <hr class="mt-0"/>
+        <h5>Add New Content</h5>
+        <hr class="mt-0"/>
+        <div class="mt-2 mb-4">
+            <form>
+                <label>Title</label>
+                <input type="text" class="form-control" v-model="newContent.title"/>
+                <label>Description</label>
+                <vue-editor v-model="newContent.body"></vue-editor>
+            </form>
+        </div>
         <h6>1. Post Title</h6>
         <p class="text-muted mb-0">
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
@@ -26,12 +36,18 @@
 </template>
 
 <script>
+    import { VueEditor } from 'vue2-editor'
+
     export default {
         name: "user-page-details",
         data() {
             return {
-                currentPage: this.$store.getters.getCurrentPage
+                currentPage: this.$store.getters.getCurrentPage,
+                newContent: {title: '', body: ''}
             }
+        },
+        components: {
+            VueEditor,
         },
         methods: {
             getPageDetails() {
