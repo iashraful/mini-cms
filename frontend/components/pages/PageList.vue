@@ -1,16 +1,18 @@
 <template>
     <div>
-        <p class="alert alert-success" v-if="showAlert">{{ alertMgs }}</p>
-        <h1>Page List</h1>
-        <div class="row">
+        <p class="alert alert-success text-center" v-if="showAlert">{{ alertMgs }}</p>
+        <h5>Add new page</h5>
+        <hr class="mt-0"/>
+        <div class="">
             <form v-on:submit.prevent="handleSubmit">
-                <label>Page Title</label>
-                <input v-model="page.name"/>
+                <label>Title</label>
+                <input class="form-input" v-model="page.name"/>
                 <p v-if="errorData.name !== undefined" class="alert-danger">{{errorData.name[0]}}</p>
-                <br/>
-                <button>Add Page</button>
+                <button class="btn btn-primary btn-sm">Add Page</button>
             </form>
         </div>
+        <h5 class="mt-2">Page List</h5>
+        <hr class="mt-0"/>
         <ul>
             <li v-for="page in pages">
                 <router-link :to="currentPath + '/' + page.path">{{page.name}}</router-link>
@@ -56,5 +58,15 @@
 </script>
 
 <style scoped>
-
+    .form-input {
+        padding: .175rem .55rem;;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
 </style>
