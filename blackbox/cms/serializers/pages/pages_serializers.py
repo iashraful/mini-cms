@@ -11,7 +11,15 @@ class ContentSerializer(serializers.ModelSerializer):
         fields = ('identifier', 'status', 'order', 'title', 'body')
 
 
-class PageSerializer(serializers.ModelSerializer):
+class PageListSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Page
+        fields = ('name', 'path',)
+        lookup_field = 'path'
+
+
+class PageDetailsSerializer(serializers.ModelSerializer):
     contents = ContentSerializer(many=True, read_only=True)
 
     class Meta:

@@ -5,19 +5,19 @@ from rest_framework import generics
 from rest_framework.permissions import AllowAny
 
 from blackbox.cms.models import Page
-from blackbox.cms.serializers.pages.pages_serializers import PageSerializer
+from blackbox.cms.serializers.pages.pages_serializers import PageListSerializer, PageDetailsSerializer
 
 __author__ = 'Ashraful'
 
 
 class PageListView(generics.ListCreateAPIView):
-    serializer_class = PageSerializer
+    serializer_class = PageListSerializer
     permission_classes = (AllowAny,)
     queryset = Page.objects.filter()
 
 
 class PageDetailsView(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = PageSerializer
+    serializer_class = PageDetailsSerializer
     permission_classes = (AllowAny,)
 
     def get_object(self):
