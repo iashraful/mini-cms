@@ -5,11 +5,11 @@ const HEADERS = {
 };
 
 export default {
-    getContents() {
+    getContentDetails(slug) {
         if (store.state.isAuthenticated) {
             HEADERS['Authorization'] = 'Token ' + store.state.token;
         }
-        const apiUrl = 'api/contents/';
+        const apiUrl = 'api/contents/' + slug + '/';
         const payload = {
             method: 'GET',
             headers: HEADERS

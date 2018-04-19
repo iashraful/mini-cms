@@ -6,6 +6,7 @@ import ProfileSettings from '@/components/settings/ProfileSettings'
 import AppConfigSettings from '@/components/settings/AppConfigSettings'
 import PageList from '@/components/settings/admin/pages/PageList'
 import PageDetails from '@/components/pages/PageDetails'
+import ContentDetails from '@/components/contents/ContentDetails'
 import UserPageDetails from '@/components/settings/admin/pages/UserPageDetails'
 import NotFound from '@/components/utils/common/NotFound'
 
@@ -121,6 +122,18 @@ let menuItems = [
         path: '/p/:pageSlug',
         identifier: 'app-page-details',
         component: PageDetails,
+        submenus: [],
+        dropdown_items: [],
+        is_dropdown: false,
+        is_hidden: true,
+        is_main_menu: false,
+        auth: true
+    },
+    {
+        name: 'Content Details',
+        path: '/c/:contentSlug',
+        identifier: 'app-content-details',
+        component: ContentDetails,
         submenus: [],
         dropdown_items: [],
         is_dropdown: false,

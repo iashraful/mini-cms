@@ -1,3 +1,5 @@
+import uuid
+
 from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import generics, status
 from rest_framework.permissions import AllowAny
@@ -34,3 +36,17 @@ class ContentCreateView(generics.CreateAPIView):
         except ObjectDoesNotExist:
             return Response(data={'message': 'Something went wrong. Please try again'},
                             status=status.HTTP_400_BAD_REQUEST)
+
+
+class ContentDetailsView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = ContentSerializer
+    permission_classes = (AllowAny,)
+
+    def get_object(self):
+        slug = self.kwargs.get('slug')
+        try:
+            uuid.UUID(slug)
+            queryset = Content.objects.get(identifier=slug)
+            return queryset
+        except (ObjectDoesNotExist, ValueError):
+            return None

@@ -34,8 +34,9 @@
                 <p v-if="content.body.length <= 500" class="text-muted mb-0 ml-4"
                    v-html="content.body.slice(0, 500)"></p>
                 <button v-if="content.body.length > 500"
+                        v-on:click="handleReadMore(content.identifier)"
                         class="ml-4 btn btn-outline-primary pt-0 pb-0 pl-5 pr-5">
-                    View Details
+                    Read More
                 </button>
             </div>
         </div>
@@ -84,6 +85,9 @@
                     this.showAlert = true;
                     this.alertMgs = 'Content Saved Successfully';
                 })
+            },
+            handleReadMore(slug) {
+                this.$router.push('/c/' + slug)
             }
         },
         mounted() {

@@ -46,5 +46,15 @@ export default {
                 fail(err)
             })
         })
+    },
+
+    getContentDetailsFromApi(context, slug) {
+        return new Promise((success, fail) => {
+            contentApi.getContentDetails(slug).then((content) => {
+                success(content);
+            }).then((err) => {
+                fail(err);
+            })
+        })
     }
 }
