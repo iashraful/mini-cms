@@ -42,3 +42,7 @@
     width: 50px;
     padding: 0 !important;
 }
+
+.content-title {
+    font-weight: 700;
+}
