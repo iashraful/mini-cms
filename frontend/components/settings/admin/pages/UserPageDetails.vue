@@ -17,7 +17,12 @@
             <h5>{{ currentPage.name }} Contents</h5>
             <hr class="mt-0"/>
             <div v-for="(content, index) in currentPage.contents" :key="index" class="mb-4">
-                <h6 class="content-title">{{ index + 1 }}. {{ content.title }}</h6>
+                <h6 class="content-title">
+                    {{ index + 1 }}. {{ content.title }}
+                    <span style="font-size: 12px" :class="{'alert alert-danger p-1': content.status === enums.ContentEnum.DRAFT.value, 'alert alert-info p-1': content.status === enums.ContentEnum.ARCHIVE.value, }">
+                        {{ enums.ContentEnum.props[content.status].name }}
+                    </span>
+                </h6>
                 <p v-if="content.body.length > 500" class="text-muted mb-0 ml-4"
                    v-html="content.body.slice(0, 500) + '...'"></p>
                 <p v-if="content.body.length <= 500" class="text-muted mb-0 ml-4"
@@ -33,6 +38,7 @@
 
 <script>
     import {VueEditor} from 'vue2-editor'
+    import * as enums from '@/config/enums'
 
     export default {
         name: "user-page-details",
@@ -41,6 +47,7 @@
                 currentPage: this.$store.getters.getCurrentPage,
                 newContent: {title: '', body: '', page_slug: this.$route.params.pageSlug},
                 loading: false,
+                enums: enums
             }
         },
         components: {
