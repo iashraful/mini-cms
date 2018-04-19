@@ -5,3 +5,4 @@ drf-role==0.1.0
 Pillow==5.0.0
 pytz==2017.3
 psycopg2==2.7.3
+gunicorn==19.7.1
