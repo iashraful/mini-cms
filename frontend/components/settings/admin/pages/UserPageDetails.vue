@@ -16,7 +16,7 @@
             </div>
             <h5>{{ currentPage.name }} Contents</h5>
             <hr class="mt-0"/>
-            <div v-for="(content, index) in currentPage.contents" :key="index">
+            <div v-for="(content, index) in currentPage.contents" :key="index" class="mb-4">
                 <h6 class="content-title">{{ index + 1 }}. {{ content.title }}</h6>
                 <p v-if="content.body.length > 500" class="text-muted mb-0 ml-4"
                    v-html="content.body.slice(0, 500) + '...'"></p>

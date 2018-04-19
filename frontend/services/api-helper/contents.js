@@ -1,9 +1,14 @@
+import store from '@/store'
+
 const HEADERS = {
     'Content-Type': 'application/json'
 };
 
 export default {
     getContents() {
+        if (store.state.isAuthenticated) {
+            HEADERS['Authorization'] = 'Token ' + store.state.token;
+        }
         const apiUrl = 'api/contents/';
         const payload = {
             method: 'GET',
@@ -12,7 +17,9 @@ export default {
         return fetch(apiUrl, payload).then(response => response.json());
     },
     postContent(data) {
-        HEADERS['Authorization'] = 'Token ' + localStorage.getItem('token');
+        if (store.state.isAuthenticated) {
+            HEADERS['Authorization'] = 'Token ' + store.state.token;
+        }
         const apiUrl = 'api/create-content/';
         const payload = {
             method: 'POST',

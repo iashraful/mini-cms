@@ -1,9 +1,14 @@
+import store from "@/store";
+
 const HEADERS = {
     'Content-Type': 'application/json'
 };
 
 export default {
     getPages() {
+        if (store.state.isAuthenticated) {
+            HEADERS['Authorization'] = 'Token ' + store.state.token;
+        }
         const apiUrl = 'api/pages/';
         const payload = {
             method: 'GET',
@@ -13,6 +18,9 @@ export default {
     },
 
     postPage(data) {
+        if (store.state.isAuthenticated) {
+            HEADERS['Authorization'] = 'Token ' + store.state.token;
+        }
         const apiUrl = 'api/pages/';
         const payload = {
             method: 'POST',
@@ -30,6 +38,9 @@ export default {
     },
 
     getPageDetails(path) {
+        if (store.state.isAuthenticated) {
+            HEADERS['Authorization'] = 'Token ' + store.state.token;
+        }
         const apiUrl = 'api/pages/' + path + '/';
         const payload = {
             method: 'GET',
