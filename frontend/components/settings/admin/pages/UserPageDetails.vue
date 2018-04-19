@@ -2,6 +2,9 @@
     <div>
         <div v-if="loading" class="mt-5 text-center" style="font-size: 32px">Loading...</div>
         <div v-if="!loading">
+            <div v-if="showAlert" class="alert alert-success text-center">
+                {{ alertMgs }}
+            </div>
             <h5>Add New Content</h5>
             <hr class="mt-0"/>
             <div class="mt-2 mb-4">
@@ -53,7 +56,9 @@
                 },
                 loading: false,
                 enums: enums,
-                statusCheckBox: false
+                statusCheckBox: false,
+                showAlert: false,
+                alertMgs: ''
             }
         },
         components: {
@@ -73,7 +78,11 @@
             },
             onContentSubmit() {
                 this.$store.dispatch('postNewContent', this.newContent).then((response) => {
-                    console.log(response)
+                    this.currentPage.contents.unshift(response);
+                    this.newContent = {title: '', body: ''};
+                    this.statusCheckBox = false;
+                    this.showAlert = true;
+                    this.alertMgs = 'Content Saved Successfully';
                 })
             }
         },
