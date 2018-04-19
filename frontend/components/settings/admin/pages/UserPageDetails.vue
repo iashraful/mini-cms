@@ -40,7 +40,7 @@
         data() {
             return {
                 currentPage: this.$store.getters.getCurrentPage,
-                newContent: {title: '', body: ''},
+                newContent: {title: '', body: '', page_slug: this.$route.params.pageSlug},
                 loading: false,
             }
         },

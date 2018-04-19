@@ -6,13 +6,14 @@ __author__ = 'Ashraful'
 
 
 class ContentSerializer(serializers.ModelSerializer):
+    page_slug = serializers.UUIDField(write_only=True)
+
     class Meta:
         model = Content
-        fields = ('identifier', 'status', 'order', 'title', 'body')
+        fields = ('identifier', 'status', 'order', 'title', 'body', 'page_slug')
 
 
 class PageListSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Page
         fields = ('name', 'path',)
