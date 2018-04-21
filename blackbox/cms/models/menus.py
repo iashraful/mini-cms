@@ -22,6 +22,9 @@ class MenuGroup(BaseEntity):
     class Meta:
         app_label = "cms"
 
+    def __str__(self):
+        return self.title
+
 
 class MenuAccessControl(BaseEntity):
     access_type = models.IntegerField(default=MenuAccessTypeEnum.All.value, choices=MenuAccessTypeEnum.choices())

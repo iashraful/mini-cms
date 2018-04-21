@@ -16,6 +16,9 @@ class Page(BaseEntity):
     class Meta:
         app_label = 'cms'
 
+    def __str__(self):
+        return self.name
+
 
 class Content(BaseEntity):
     type = models.IntegerField(default=ContentTypeEnum.Plain.value)
@@ -27,3 +30,6 @@ class Content(BaseEntity):
 
     class Meta:
         app_label = 'cms'
+
+    def __str__(self):
+        return self.title
