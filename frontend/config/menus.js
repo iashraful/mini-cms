@@ -9,6 +9,7 @@ import PageDetails from '@/components/pages/PageDetails'
 import ContentDetails from '@/components/contents/ContentDetails'
 import UserPageDetails from '@/components/settings/admin/pages/UserPageDetails'
 import NotFound from '@/components/utils/common/NotFound'
+import Profile from '@/components/user/profile/Profile'
 
 let menuItems = [
     {
@@ -16,6 +17,18 @@ let menuItems = [
         path: '/',
         identifier: 'app-home',
         component: Home,
+        submenus: [],
+        dropdown_items: [],
+        is_dropdown: false,
+        is_hidden: true,
+        is_main_menu: true,
+        auth: true
+    },
+    {
+        name: 'Profile',
+        path: '/me',
+        identifier: 'app-profile',
+        component: Profile,
         submenus: [],
         dropdown_items: [],
         is_dropdown: false,
