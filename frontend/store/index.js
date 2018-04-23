@@ -18,7 +18,7 @@ const state = {
     pages: [],
     contents: [],
     routes: [],
-    currentPage: {},
+    currentPage: {contents: []},
 };
 
 export default new Vuex.Store({
