@@ -17,8 +17,14 @@ class ContentSerializer(serializers.ModelSerializer):
 class PageListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Page
-        fields = ('name', 'path',)
+        fields = ('order', 'name', 'path',)
         lookup_field = 'path'
+
+    def validate(self, attrs):
+        if 'order' not in attrs.keys():
+            max_order = self.Meta.model.get_max_order()
+            attrs['order'] = max_order + 1
+        return attrs
 
 
 class PageDetailsSerializer(serializers.ModelSerializer):

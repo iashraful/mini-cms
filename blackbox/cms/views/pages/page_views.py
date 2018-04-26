@@ -13,7 +13,7 @@ __author__ = 'Ashraful'
 class PageListView(generics.ListCreateAPIView):
     serializer_class = PageListSerializer
     permission_classes = (AllowAny,)
-    queryset = Page.objects.filter()
+    queryset = Page.objects.order_by('order')
 
 
 class PageDetailsView(generics.RetrieveUpdateDestroyAPIView):

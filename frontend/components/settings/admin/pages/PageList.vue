@@ -13,11 +13,32 @@
         </div>
         <h5 class="mt-2">Page List</h5>
         <hr class="mt-0"/>
-        <ul>
-            <li v-for="page in pages">
-                <router-link :to="currentPath + '/' + page.path">{{page.name}}</router-link>
-            </li>
-        </ul>
+        <table class="table" style="width: 50%">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Order</th>
+                <th scope="col">Title</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="page in pages">
+                <th scope="row">{{ page.order }}</th>
+                <td>{{ page.name }}</td>
+                <td class="wd-200px">
+                    <router-link :to="currentPath + '/' + page.path" class="btn btn-info btn-xs">View</router-link>
+                    <button v-on:click="editInlinePage(page.path)"
+                            class="btn btn-warning  btn-xs">
+                        Edit
+                    </button>
+                    <button v-on:click="onPageDelete(page.path)"
+                            class="btn btn-danger  btn-xs">
+                        Del
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </template>
 
@@ -47,6 +68,12 @@
                 }, (err) => {
                     this.errorData = err;
                 })
+            },
+            editInlinePage(pageSlug) {
+                console.log(pageSlug)
+            },
+            onPageDelete(pageSlug) {
+                console.log(pageSlug)
             }
         },
         created() {

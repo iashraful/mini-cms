@@ -38,6 +38,14 @@
     width: 200px !important;
 }
 
+.wd-100px {
+    width: 100px !important;
+}
+
+.wd-150px {
+    width: 150px !important;
+}
+
 .action-table-btn-sz {
     width: 50px;
     padding: 0 !important;
@@ -45,4 +53,12 @@
 
 .content-title {
     font-weight: 700;
+}
+
+.btn-xs {
+    padding: 2px 7px !important;
+}
+
+.btn {
+    border-radius: .10rem !important;
 }
