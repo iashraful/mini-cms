@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'webpack_loader',
     'rest_framework',
     'rest_framework.authtoken',
+    'coreapi',
     'drf_role',
 ]
 
