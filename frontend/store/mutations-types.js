@@ -9,3 +9,4 @@ export  const updateMenuItems = "UPDATE_MENU_ITEMS";
 export const getPageDetails = "GET_PAGE_DETAILS";
 export const saveContent = "SAVE_CONTENT";
 export const updateAppConfig = 'UPDATE_APP_CONFIGS';
+export const updatePage = 'UPDATED_PAGE';

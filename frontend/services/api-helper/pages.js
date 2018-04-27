@@ -37,6 +37,45 @@ export default {
         });
     },
 
+    putPage(data) {
+        if (store.state.isAuthenticated) {
+            HEADERS['Authorization'] = 'Token ' + store.state.token;
+        }
+        const apiUrl = 'api/pages/' + data.pageSlug + '/';
+        const payload = {
+            method: 'PUT',
+            body: JSON.stringify(data.page),
+            headers: HEADERS
+        };
+        return fetch(apiUrl, payload).then((response) => {
+            let json = response.json();
+            if (response.status === 200) {
+                return json;
+            } else {
+                return json.then(Promise.reject.bind(Promise));
+            }
+        });
+    },
+
+    deletePage(pageSlug) {
+        if (store.state.isAuthenticated) {
+            HEADERS['Authorization'] = 'Token ' + store.state.token;
+        }
+        const apiUrl = 'api/pages/' + pageSlug + '/';
+        const payload = {
+            method: 'DELETE',
+            headers: HEADERS
+        };
+        return fetch(apiUrl, payload).then((response) => {
+            // let json = response.json();
+            if (response.status === 204) {
+                return response;
+            } else {
+                return response.then(Promise.reject.bind(Promise));
+            }
+        });
+    },
+
     getPageDetails(path) {
         if (store.state.isAuthenticated) {
             HEADERS['Authorization'] = 'Token ' + store.state.token;

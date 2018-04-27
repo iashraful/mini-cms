@@ -17,6 +17,30 @@ export default {
         })
     },
 
+    updatePage(context, payload) {
+        return new Promise((success, fail) => {
+            pagesApi.putPage(payload).then((response) => {
+                if (response.path) {
+                    success(response);
+                }
+            }, (error) => {
+                fail(error)
+            });
+        })
+    },
+
+    deletePage(context, pageSlug) {
+        return new Promise((success, fail) => {
+            pagesApi.deletePage(pageSlug).then((response) => {
+                if (response.status === 204) {
+                    success(response);
+                }
+            }, (error) => {
+                fail(error)
+            });
+        })
+    },
+
     getPagesApiCall(context) {
         return new Promise((success, fail) => {
             pagesApi.getPages().then((pages) => {

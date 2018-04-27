@@ -88,7 +88,7 @@
         },
         mounted() {
             // Update Menus when new page added
-            this.$bus.$on('EB_AddedNewPage', () => {
+            this.$bus.$on('EB_PageChanged', () => {
                 this.updateDynamicPages();
             })
         }

@@ -1,4 +1,5 @@
 import * as mutationTypes from './mutations-types'
+import getters from "@/store/getters";
 
 export default {
     [mutationTypes.increment](state) {
@@ -39,5 +40,9 @@ export default {
 
     [mutationTypes.updateAppConfig](state, configData) {
         state.appConfig = configData;
+    },
+
+    [mutationTypes.updatePage](state, page) {
+
     },
 }
