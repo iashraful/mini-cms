@@ -16,7 +16,7 @@
     /* Profile Content */
     .profile-content {
         padding: 20px;
-        background: #d9e9e9;
+        background: #f7f7f7;
         min-height: 460px;
     }
 </style>

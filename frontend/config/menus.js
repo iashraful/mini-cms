@@ -86,7 +86,7 @@ let menuItems = [
                 submenus: [],
                 dropdown_items: [],
                 is_dropdown: false,
-                is_hidden: true,
+                is_hidden: false,
                 is_main_menu: false,
                 auth: true
             }

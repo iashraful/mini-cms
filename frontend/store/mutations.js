@@ -36,4 +36,8 @@ export default {
     [mutationTypes.saveContent](state, content) {
         state.contents.push(content);
     },
+
+    [mutationTypes.updateAppConfig](state, configData) {
+        state.appConfig = configData;
+    },
 }

@@ -1,6 +1,7 @@
 import * as mutationTypes from './mutations-types'
 import pagesApi from '@/services/api-helper/pages'
 import contentApi from '@/services/api-helper/contents'
+import appConfigApi from '@/services/api-helper/app-configs'
 
 export default {
     addNewPage(context, page) {
@@ -54,6 +55,26 @@ export default {
                 success(content);
             }).then((err) => {
                 fail(err);
+            })
+        })
+    },
+
+    getAppConfigFromApi(context) {
+        return new Promise((success, fail) => {
+            appConfigApi.getAppConfigs().then((data) => {
+                context.commit(mutationTypes.updateAppConfig, data);
+                success(data)
+            })
+        })
+    },
+
+    updateAppConfigPostApi(context, data) {
+        return new Promise((success, fail) => {
+            appConfigApi.postAppConfig(data).then((config) => {
+                context.commit(mutationTypes.updateAppConfig, config);
+                success(config);
+            }).then((err) => {
+                fail(err)
             })
         })
     }

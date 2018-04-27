@@ -63,7 +63,7 @@
     /* Profile sidebar */
     .profile-sidebar {
         padding: 20px 0 10px 0;
-        background: #d9e9e9;
+        background: #f7f7f7;
     }
 
     .profile-userpic img {

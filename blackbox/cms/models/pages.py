@@ -42,3 +42,10 @@ class Content(BaseEntity):
 
     def __str__(self):
         return self.title
+
+    @classmethod
+    def get_max_order(cls):
+        _max_order = cls.objects.aggregate(Max('order'))['order__max']
+        if _max_order is not None:
+            return _max_order
+        return 1

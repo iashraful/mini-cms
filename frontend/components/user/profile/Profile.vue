@@ -10,6 +10,7 @@
 <script>
     import ProfileLeftSideView from "@/components/user/profile/ProfileLeftSideView";
     import ProfileContentView from "@/components/user/profile/ProfileContentView";
+
     export default {
         name: "Profile",
         components: {ProfileContentView, ProfileLeftSideView}
@@ -18,7 +19,7 @@
 
 <style scoped>
     body {
-        background: #F1F3FA !important;
+        background: #f7f7f7 !important;
     }
 
     /* Profile container */

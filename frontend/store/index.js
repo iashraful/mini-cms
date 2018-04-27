@@ -9,6 +9,10 @@ Vue.use(Vuex);
 
 const state = {
     appName: localStorage.getItem("appName") || 'MiNi CMS',
+    appConfig: {
+        app_name: '',
+        footer: ''
+    },
     count: 0,
     loginDetails: {},
     menus: menuItems,

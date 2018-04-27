@@ -69,6 +69,9 @@
             runForFirstTime() {
                 // Currently I've plan for initial api call here.
                 // Get Pages
+                this.$store.dispatch('getAppConfigFromApi').then(() => {
+
+                });
                 this.$store.dispatch('getPagesApiCall').then(() => {
                     setTimeout(() => {
                         this.updateDynamicPages();
