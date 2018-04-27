@@ -62,7 +62,7 @@
                 this.$store.dispatch('addNewPage', this.page).then(() => {
                     this.page = {name: ''};
                     this.errorData = {};
-                    this.$bus.$emit('addedNewPage_EB', 'New Page Added');
+                    this.$bus.$emit('EB_AddedNewPage', 'New Page Added');
                     this.showAlert = true;
                     this.alertMgs = 'Page created successfully';
                 }, (err) => {
@@ -77,7 +77,7 @@
             }
         },
         created() {
-            this.$bus.$on('renderedPages', () => {
+            this.$bus.$on('EB_RenderedPages', () => {
                 this.pages = this.$store.state.pages;
             })
         }

@@ -20,6 +20,7 @@
 
             handleAppConfigSubmit() {
                 this.$store.dispatch('updateAppConfigPostApi', this.appConfig).then((data) => {
+                    this.$bus.$emit('EB_ConfigUpdated', 'App Config Updated');
                     this.showAlert = true;
                     this.alertMgs = 'Updated successfully';
                 })

@@ -63,7 +63,7 @@
                 if (menuItems.length > 0) {
                     let mergedMenus = configMenus.concat(menuItems);
                     this.$store.commit(mutationTypes.updateMenuItems, mergedMenus);
-                    this.$bus.$emit('renderedPages', 'Navbar Updated')
+                    this.$bus.$emit('EB_RenderedPages', 'Navbar Updated')
                 }
             },
             runForFirstTime() {
@@ -82,13 +82,13 @@
         created() {
             this.runForFirstTime();
             // Loading off
-            this.$bus.$on('renderedPages', () => {
+            this.$bus.$on('EB_RenderedPages', () => {
                 this.loading = false;
             })
         },
         mounted() {
             // Update Menus when new page added
-            this.$bus.$on('addedNewPage_EB', () => {
+            this.$bus.$on('EB_AddedNewPage', () => {
                 this.updateDynamicPages();
             })
         }

@@ -45,7 +45,7 @@
         data() {
             return {
                 searchQuery: "",
-                appName: this.$store.state.appName,
+                appName: this.$store.state.appConfig.app_name,
                 isAuth: this.$store.state.isAuthenticated,
                 topNavLogo: store.state.appLogo,
                 navItems: [],
@@ -94,19 +94,15 @@
              * Here I'll parse the name and path of each route.
              * This method will trigger when vue component instance will created.
              */
-            // Get logo of the app
-            if (store.state.isAuthenticated) {
-                this.getLogo();
-            }
             // Generate menu
             this.menuManager();
-            this.$bus.$on('renderedPages', () => {
+            this.$bus.$on('EB_RenderedPages', () => {
                 this.menuManager();
-            })
+            });
+            this.$bus.$on('EB_ConfigUpdated', () => {
+                this.appName = this.$store.state.appConfig.app_name;
+            });
         },
-        mounted() {
-            // console.log(this.navItems);
-        }
     }
 </script>
 
