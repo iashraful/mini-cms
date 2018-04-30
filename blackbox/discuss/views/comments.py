@@ -13,7 +13,7 @@ class CommentListView(ListCreateAPIView):
     serializer_class = CommentSerializer
 
     def get_queryset(self):
-        _user = self.request.is_authenticated
+        _user = self.request.user.is_authenticated
         if _user:
             return Comment.objects.all()
         else:
