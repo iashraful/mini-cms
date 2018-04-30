@@ -1,5 +1,4 @@
 import * as mutationTypes from './mutations-types'
-import getters from "@/store/getters";
 
 export default {
     [mutationTypes.increment](state) {

@@ -67,7 +67,6 @@ export default {
     postNewContent(context, data) {
         return new Promise((success, fail) => {
             contentApi.postContent(data).then((content) => {
-                context.commit(mutationTypes.saveContent, content);
                 success(content);
             }).then((err) => {
                 fail(err)
@@ -78,7 +77,6 @@ export default {
     putPageContent(context, data) {
         return new Promise((success, fail) => {
             contentApi.putContent(data).then((content) => {
-                context.commit(mutationTypes.saveContent, content);
                 success(content);
             }).then((err) => {
                 fail(err)
@@ -86,6 +84,15 @@ export default {
         })
     },
 
+    deletePageContent(context, contentIdentifier) {
+        return new Promise((success, fail) => {
+            contentApi.deleteContent(contentIdentifier).then((content) => {
+                success(content);
+            }).then((err) => {
+                fail(err)
+            })
+        })
+    },
 
     getContentDetailsFromApi(context, slug) {
         return new Promise((success, fail) => {

@@ -38,10 +38,13 @@
                    v-html="content.body.slice(0, 100) + '...'"></p>
                 <p v-if="content.body.length <= 100" class="text-muted mb-0 ml-4"
                    v-html="content.body.slice(0, 100)"></p>
-                <button v-if="content.body.length > 100"
-                        v-on:click="handleEdit(content.identifier)"
+                <button v-on:click="handleEdit(content.identifier)"
                         class="ml-4 btn btn-outline-primary pt-0 pb-0 pl-5 pr-5">
                     Edit
+                </button>
+                <button v-on:click="handleDelete(content.identifier)"
+                        class="ml-4 btn btn-outline-danger pt-0 pb-0 pl-5 pr-5">
+                    Delete
                 </button>
             </div>
         </div>
@@ -51,6 +54,7 @@
 <script>
     import {VueEditor} from 'vue2-editor'
     import * as enums from '@/config/enums'
+    import swal from 'sweetalert';
 
     export default {
         name: "user-page-details",
@@ -99,7 +103,8 @@
                         data: this.newContent, slug: this.newContent.identifier
                     };
                     this.$store.dispatch('putPageContent', payload).then((response) => {
-                        this.currentPage.contents.unshift(response);
+                        const contentIndex = this.currentPage.contents.findIndex(c => c.identifier === response.identifier);
+                        this.currentPage.contents[contentIndex] = response;
                         this.newContent = {title: '', body: ''};
                         this.statusCheckBox = false;
                         this.showAlert = true;
@@ -114,6 +119,27 @@
                 this.newContent = content;
                 this.newContent['page_slug'] = this.currentPage.path;
                 this.statusCheckBox = content.status;
+            },
+            handleDelete(identifier) {
+                swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover this content.",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                }).then((willDelete) => {
+                    if (willDelete) {
+                        this.$store.dispatch('deletePageContent', identifier).then((response) => {
+                            const contentIndex = this.currentPage.contents.findIndex(c => c.identifier === identifier);
+                            this.currentPage.contents.splice(contentIndex, 1);
+                            swal("Content has deleted successfully.", {
+                                icon: "success",
+                            });
+                        });
+                    } else {
+                        swal("Thanks God! You changed mind to delete this.");
+                    }
+                });
             }
         },
         mounted() {

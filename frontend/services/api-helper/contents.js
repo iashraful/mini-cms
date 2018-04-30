@@ -55,4 +55,22 @@ export default {
             }
         });
     },
+
+    deleteContent(identifier) {
+        if (store.state.isAuthenticated) {
+            HEADERS['Authorization'] = 'Token ' + store.state.token;
+        }
+        const apiUrl = 'api/contents/' + identifier + '/';
+        const payload = {
+            method: 'DELETE',
+            headers: HEADERS
+        };
+        return fetch(apiUrl, payload).then((response) => {
+            if (response.status === 204) {
+                return response;
+            } else {
+                return response.then(Promise.reject.bind(Promise));
+            }
+        });
+    },
 }
