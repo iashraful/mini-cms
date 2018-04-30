@@ -11,7 +11,7 @@ __author__ = 'Ashraful'
 class MenuGroup(BaseEntity):
     page = models.ForeignKey('cms.Page', on_delete=models.CASCADE)
     title = models.CharField(max_length=32)
-    uuid = models.UUIDField(unique=True, default=uuid.uuid4())
+    uuid = models.UUIDField(unique=True, editable=False)
     submenus = models.ManyToManyField('self', blank=True)
     dropdown_items = models.ManyToManyField('self', blank=True)
     auth = models.BooleanField(default=True)

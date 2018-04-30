@@ -49,6 +49,7 @@ MY_CUSTOM_APPS = [
     'blackbox.core',
     'blackbox.client_config',
     'blackbox.cms',
+    'blackbox.discuss'
 ]
 
 # Sum up my custom apps
