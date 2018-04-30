@@ -1,14 +1,14 @@
 <template>
-    <div>
+    <div class="row">
         <div v-if="loading" class="mt-5 text-center" style="font-size: 32px">Loading...</div>
-        <div v-if="!loading">
+        <div v-if="!loading" class="col-md-8 col-sm-12">
             <div v-if="showAlert" class="alert alert-success text-center">
                 {{ alertMgs }}
             </div>
-            <h5>Add New Content</h5>
+            <h5>{{ contentFormTitle }}</h5>
             <hr class="mt-0"/>
             <div class="mt-2 mb-4">
-                <form v-on:submit.prevent="onContentSubmit">
+                <form v-on:submit.prevent="onContentSubmit(actionType)">
                     <label>Title</label>
                     <input type="text" class="form-input" v-model="newContent.title" required/>
                     <label>Description</label>
@@ -19,6 +19,8 @@
                     <br/>
                 </form>
             </div>
+        </div>
+        <div class="col-md-4 col-sm-12">
             <h5>{{ currentPage.name }} Contents</h5>
             <hr class="mt-0"/>
             <div class="text-center" v-if="currentPage.contents.length <= 0">
@@ -32,14 +34,14 @@
                         {{ enums.ContentEnum.props[content.status].name }}
                     </span>
                 </h6>
-                <p v-if="content.body.length > 500" class="text-muted mb-0 ml-4"
-                   v-html="content.body.slice(0, 500) + '...'"></p>
-                <p v-if="content.body.length <= 500" class="text-muted mb-0 ml-4"
-                   v-html="content.body.slice(0, 500)"></p>
-                <button v-if="content.body.length > 500"
-                        v-on:click="handleReadMore(content.identifier)"
+                <p v-if="content.body.length > 100" class="text-muted mb-0 ml-4"
+                   v-html="content.body.slice(0, 100) + '...'"></p>
+                <p v-if="content.body.length <= 100" class="text-muted mb-0 ml-4"
+                   v-html="content.body.slice(0, 100)"></p>
+                <button v-if="content.body.length > 100"
+                        v-on:click="handleEdit(content.identifier)"
                         class="ml-4 btn btn-outline-primary pt-0 pb-0 pl-5 pr-5">
-                    Read More
+                    Edit
                 </button>
             </div>
         </div>
@@ -62,7 +64,9 @@
                 enums: enums,
                 statusCheckBox: false,
                 showAlert: false,
-                alertMgs: ''
+                alertMgs: '',
+                actionType: enums.ActionTypeEnum.CREATE.value,
+                contentFormTitle: 'Add New Content',
             }
         },
         components: {
@@ -80,17 +84,36 @@
                     this.currentPage = response;
                 })
             },
-            onContentSubmit() {
-                this.$store.dispatch('postNewContent', this.newContent).then((response) => {
-                    this.currentPage.contents.unshift(response);
-                    this.newContent = {title: '', body: ''};
-                    this.statusCheckBox = false;
-                    this.showAlert = true;
-                    this.alertMgs = 'Content Saved Successfully';
-                })
+            onContentSubmit(actionType) {
+                if (actionType === enums.ActionTypeEnum.CREATE.value) {
+                    this.$store.dispatch('postNewContent', this.newContent).then((response) => {
+                        this.currentPage.contents.unshift(response);
+                        this.newContent = {title: '', body: ''};
+                        this.statusCheckBox = false;
+                        this.showAlert = true;
+                        this.alertMgs = 'Content Saved Successfully';
+                    })
+                }
+                if (actionType === enums.ActionTypeEnum.EDIT.value) {
+                    const payload = {
+                        data: this.newContent, slug: this.newContent.identifier
+                    };
+                    this.$store.dispatch('putPageContent', payload).then((response) => {
+                        this.currentPage.contents.unshift(response);
+                        this.newContent = {title: '', body: ''};
+                        this.statusCheckBox = false;
+                        this.showAlert = true;
+                        this.alertMgs = 'Content Updated Successfully';
+                    })
+                }
             },
-            handleReadMore(slug) {
-                this.$router.push('/c/' + slug)
+            handleEdit(identifier) {
+                this.actionType = enums.ActionTypeEnum.EDIT.value;
+                this.contentFormTitle = 'Update Content';
+                const content = this.$store.getters.getContentByIdentifier(identifier);
+                this.newContent = content;
+                this.newContent['page_slug'] = this.currentPage.path;
+                this.statusCheckBox = content.status;
             }
         },
         mounted() {
@@ -103,7 +126,7 @@
                 this.getPageDetails();
             },
             statusCheckBox(newVal, oldVal) {
-                if (newVal === true) {
+                if (newVal) {
                     this.newContent.status = enums.ContentEnum.PUBLISH.value
                 } else {
                     this.newContent.status = enums.ContentEnum.DRAFT.value

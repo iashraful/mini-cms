@@ -8,3 +8,14 @@ export const ContentEnum = {
         2: {name: "Archived", value: 2, code: "AVE"}
     }
 };
+
+export const ActionTypeEnum = {
+    CREATE: {value: 0, name: 'Create', code: 'CRT'},
+    EDIT: {value: 1, name: 'Edit', code: 'EDT'},
+    DELETE: {value: 2, name: 'Delete', code: 'DLT'},
+    props: {
+        0: {value: 0, name: 'Create', code: 'CRT'},
+        1: {value: 1, name: 'Edit', code: 'EDT'},
+        2: {value: 2, name: 'Delete', code: 'DLT'},
+    }
+};

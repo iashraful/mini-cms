@@ -75,6 +75,18 @@ export default {
         })
     },
 
+    putPageContent(context, data) {
+        return new Promise((success, fail) => {
+            contentApi.putContent(data).then((content) => {
+                context.commit(mutationTypes.saveContent, content);
+                success(content);
+            }).then((err) => {
+                fail(err)
+            })
+        })
+    },
+
+
     getContentDetailsFromApi(context, slug) {
         return new Promise((success, fail) => {
             contentApi.getContentDetails(slug).then((content) => {

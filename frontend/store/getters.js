@@ -10,5 +10,8 @@ export default {
     },
     getPageIndexByPath: (state) => (path) => {
         return state.pages.findIndex(item => item.path === path)
-    }
+    },
+    getContentByIdentifier: (state) => (hash) => {
+        return state.currentPage.contents.find(content => content.identifier === hash)
+    },
 }

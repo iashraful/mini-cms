@@ -34,5 +34,25 @@ export default {
                 return json.then(Promise.reject.bind(Promise));
             }
         });
-    }
+    },
+
+    putContent(data) {
+        if (store.state.isAuthenticated) {
+            HEADERS['Authorization'] = 'Token ' + store.state.token;
+        }
+        const apiUrl = 'api/contents/' + data.slug + '/';
+        const payload = {
+            method: 'PUT',
+            body: JSON.stringify(data.data),
+            headers: HEADERS
+        };
+        return fetch(apiUrl, payload).then((response) => {
+            let json = response.json();
+            if (response.status === 200) {
+                return json;
+            } else {
+                return json.then(Promise.reject.bind(Promise));
+            }
+        });
+    },
 }
