@@ -8,7 +8,9 @@
                 No content Found.
             </div>
             <div v-for="(content, index) in currentPage.contents" :key="index" class="mb-4">
-                <h6 class="content-title">{{ index + 1 }}. {{ content.title }}</h6>
+                <h6 class="content-title">
+                    <span v-if="currentPage.contents.length > 1">{{ index + 1 }}.</span> {{ content.title }}
+                </h6>
                 <p v-if="content.body.length > 500" class="text-muted mb-0 ml-4"
                    v-html="content.body.slice(0, 500) + '...'"></p>
                 <p v-if="content.body.length <= 500" class="text-muted mb-0 ml-4"

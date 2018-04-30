@@ -28,7 +28,7 @@
             </div>
             <div v-for="(content, index) in currentPage.contents" :key="index" class="mb-4">
                 <h6 class="content-title">
-                    {{ index + 1 }}. {{ content.title }}
+                    <span v-if="currentPage.contents.length > 1">{{ index + 1 }}.</span> {{ content.title }}
                     <span style="font-size: 12px"
                           :class="{'alert alert-danger p-1': content.status === enums.ContentEnum.DRAFT.value, 'alert alert-info p-1': content.status === enums.ContentEnum.ARCHIVE.value, }">
                         {{ enums.ContentEnum.props[content.status].name }}
