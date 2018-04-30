@@ -7,5 +7,8 @@ export default {
     },
     getCurrentPage(state) {
         return state.currentPage
+    },
+    getPageIndexByPath: (state) => (path) => {
+        return state.pages.findIndex(item => item.path === path)
     }
 }

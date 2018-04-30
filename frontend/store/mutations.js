@@ -42,7 +42,7 @@ export default {
         state.appConfig = configData;
     },
 
-    [mutationTypes.updatePage](state, page) {
-
+    [mutationTypes.deletePage](state, pageIndex) {
+        state.pages.splice(pageIndex, 1);
     },
 }

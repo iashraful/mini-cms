@@ -33,6 +33,8 @@ export default {
         return new Promise((success, fail) => {
             pagesApi.deletePage(pageSlug).then((response) => {
                 if (response.status === 204) {
+                    const pageIndex = context.getters.getPageIndexByPath(pageSlug);
+                    context.commit(mutationTypes.deletePage, pageIndex);
                     success(response);
                 }
             }, (error) => {
