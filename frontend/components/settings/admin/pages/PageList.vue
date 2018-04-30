@@ -104,7 +104,6 @@
                 })
             },
             editInlinePage(pageSlug) {
-                console.log(pageSlug);
                 this.editablePageSlug = pageSlug;
                 this.pageUpdateFormData = this.$store.getters.getPageByPath(pageSlug);
             },

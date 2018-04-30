@@ -21,6 +21,9 @@
             </div>
             <h5>{{ currentPage.name }} Contents</h5>
             <hr class="mt-0"/>
+            <div class="text-center" v-if="currentPage.contents.length <= 0">
+                No contents found.
+            </div>
             <div v-for="(content, index) in currentPage.contents" :key="index" class="mb-4">
                 <h6 class="content-title">
                     {{ index + 1 }}. {{ content.title }}
@@ -91,7 +94,6 @@
             }
         },
         mounted() {
-            const path = this.$router.history.current.path;
             // get current page from api
             this.getPageDetails();
         },

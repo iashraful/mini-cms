@@ -1,10 +1,10 @@
 export const ContentEnum = {
     DRAFT: {value: 0, name: 'Draft', code: 'DFT'},
-    PUBLISH: {value: 1, name: 'Publish', code: 'PSH'},
-    ARCHIVE: {value: 2, name: 'Archive', code: 'AVE'},
+    PUBLISH: {value: 1, name: 'Published', code: 'PSH'},
+    ARCHIVE: {value: 2, name: 'Archived', code: 'AVE'},
     props: {
         0: {name: "Draft", value: 0, code: "DFT"},
-        1: {name: "Publish", value: 1, code: "PSH"},
-        2: {name: "Archive", value: 2, code: "AVE"}
+        1: {name: "Published", value: 1, code: "PSH"},
+        2: {name: "Archived", value: 2, code: "AVE"}
     }
 };

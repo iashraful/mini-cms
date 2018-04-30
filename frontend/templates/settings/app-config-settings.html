@@ -4,14 +4,14 @@
     </div>
     <form v-on:submit.prevent="handleAppConfigSubmit">
         <div class="row">
-            <div class="col-md-4 col-sm-6">
+            <div class="col-md-6 col-sm-6">
                 <div class="form-group">
                     <label>App Name</label>
                     <input class="form-control" type="text" v-model="appConfig.app_name"/>
                 </div>
                 <div class="form-group">
                     <label>App Footer</label>
-                    <input class="form-control" type="text" v-model="appConfig.footer"/>
+                    <vue-editor v-model="appConfig.footer"></vue-editor>
                 </div>
                 <button type="submit" class="btn btn-dark">Save</button>
             </div>

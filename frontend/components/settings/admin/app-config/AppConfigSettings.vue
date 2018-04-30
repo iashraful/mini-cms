@@ -2,9 +2,10 @@
 
 <script>
     import AppAlert from "@/components/utils/ui/AppAlert";
+    import {VueEditor} from 'vue2-editor';
 
     export default {
-        components: {AppAlert},
+        components: {AppAlert, VueEditor},
         name: 'app-config-settings',
         data() {
             return {
