@@ -108,14 +108,24 @@
                 this.pageUpdateFormData = this.$store.getters.getPageByPath(pageSlug);
             },
             onPageDelete(pageSlug) {
-                let confirmation = confirm('All the content will be deleted.\nAre you Sure?')
-                if (confirmation) {
-                    this.$store.dispatch('deletePage', pageSlug).then(() => {
-                        this.showAlert = true;
-                        this.alertMgs = 'Page Deleted Successfully.';
-                        this.$bus.$emit('EB_PageChanged', 'Page Deleted');
-                    })
-                }
+                swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover it's contents.",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                }).then((willDelete) => {
+                    if (willDelete) {
+                        this.$store.dispatch('deletePage', pageSlug).then(() => {
+                            this.$bus.$emit('EB_PageChanged', 'Page Deleted');
+                            swal("Content has deleted successfully.", {
+                                icon: "success",
+                            });
+                        });
+                    } else {
+                        swal("Thanks God! You changed mind to delete this.");
+                    }
+                });
             },
             submitUpdatePage() {
                 const payload = {
