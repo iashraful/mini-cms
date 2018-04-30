@@ -1,4 +1,4 @@
-<template src="../../templates/settings/app-config-settings.html"></template>
+<template src="@/templates/settings/app-config-settings.html"></template>
 
 <script>
     import AppAlert from "@/components/utils/ui/AppAlert";
