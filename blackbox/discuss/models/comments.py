@@ -9,7 +9,7 @@ __author__ = 'Ashraful'
 
 
 class Comment(BaseEntity):
-    uuid = models.UUIDField(unique=True, editable=False)
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False)
     text = models.TextField(verbose_name='Comment or Reply')
     status = models.IntegerField(default=CommentTypeEnum.Pending.value)
     replies = models.ManyToManyField('self')

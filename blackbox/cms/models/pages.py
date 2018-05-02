@@ -31,7 +31,7 @@ class Page(BaseEntity):
 
 class Content(BaseEntity):
     type = models.IntegerField(default=ContentTypeEnum.Plain.value)
-    identifier = models.UUIDField(unique=True, editable=False)
+    identifier = models.UUIDField(default=uuid.uuid4, editable=False)
     order = models.IntegerField(default=1)
     status = models.IntegerField(default=ContentStatusEnum.Draft.value)
     title = models.CharField(max_length=256)
