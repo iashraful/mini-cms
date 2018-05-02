@@ -162,4 +162,9 @@
         border-radius: .25rem;
         transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     }
+
+    .row {
+        margin-left: -15px !important;
+        margin-right: -15px !important;
+    }
 </style>
