@@ -75,6 +75,7 @@
                 this.$store.dispatch('getPagesApiCall').then(() => {
                     setTimeout(() => {
                         this.updateDynamicPages();
+                        this.loading = false;
                     }, 500)
                 });
             }
