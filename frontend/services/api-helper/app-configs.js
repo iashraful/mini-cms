@@ -21,7 +21,7 @@ export default {
         if (store.state.isAuthenticated) {
             HEADERS['Authorization'] = 'Token ' + store.state.token;
         }
-        const apiUrl = 'api/app-config/';
+        const apiUrl = 'api/create-app-config/';
         const payload = {
             method: 'POST',
             body: JSON.stringify(data),
