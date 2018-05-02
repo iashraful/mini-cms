@@ -10,6 +10,14 @@
                     <input class="form-control" type="text" v-model="appConfig.app_name"/>
                 </div>
                 <div class="form-group">
+                    <label>Browser Title</label>
+                    <input class="form-control" type="text" v-model="appConfig.browser_title"/>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" v-model="appConfig.hide_footer"/>
+                    <label>Hide Footer</label>
+                </div>
+                <div class="form-group" v-show="!appConfig.hide_footer">
                     <label>App Footer</label>
                     <vue-editor v-model="appConfig.footer"></vue-editor>
                 </div>
