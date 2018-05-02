@@ -44,4 +44,8 @@ export default {
     [mutationTypes.deletePage](state, pageIndex) {
         state.pages.splice(pageIndex, 1);
     },
+
+    [mutationTypes.searchResult](state, data) {
+        state.searchResults = data;
+    },
 }

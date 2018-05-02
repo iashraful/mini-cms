@@ -14,6 +14,8 @@ class SearchListView(ListAPIView):
 
     def get_queryset(self):
         q = self.request.GET.get('q')
+        if q is None:
+            return None
         _user = self.request.user.is_authenticated
         # This is basic searching for now. Will change it later.
         queryset = Content.objects.filter(title__icontains=q)

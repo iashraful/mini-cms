@@ -29,7 +29,7 @@
                 </ul>
                 <ul class="navbar-nav ml-auto" v-if="isAuth">
                     <li class="nav-item" style="margin-top: 2px;">
-                        <form class="form-inline" v-on:submit.prevent="handleSearchSubmit">
+                        <form class="form-inline">
                             <input v-model="searchQuery"
                                    class="form-control mr-sm-2"
                                    type="search" aria-label="Search"
@@ -53,7 +53,13 @@
             </div>
         </nav>
         <div class="search-wrapper" v-if="searchQuery.length > 0">
-            <h3 class="text-center">Loading...</h3>
+            <h3 class="text-center" v-if="searchLoading">Loading...</h3>
+            <div>
+                <ul v-for="item in searchResults">
+                    <li>{{ item.title }}</li>
+                </ul>
+                <p class="text-center" v-if="searchResults.length <= 0 && !searchLoading">Nothing found.</p>
+            </div>
         </div>
     </div>
 </template>
@@ -73,7 +79,9 @@
                 topNavLogo: store.state.appLogo,
                 navItems: [],
                 dropdownItems: [],
-                loggedInUser: 'Test User'
+                loggedInUser: 'Test User',
+                searchLoading: true,
+                searchResults: [],
             }
         },
         methods: {
@@ -112,7 +120,7 @@
                 }
             },
             handleSearchSubmit() {
-                console.log(this.searchQuery)
+                // console.log(this.searchQuery)
             }
         },
         created() {
@@ -129,6 +137,16 @@
                 this.appName = this.$store.state.appConfig.app_name;
             });
         },
+        watch: {
+            searchQuery(newVal) {
+                this.searchResults = [];
+                this.searchLoading = true;
+                this.$store.dispatch('getSearchResults', newVal).then((response) => {
+                    this.searchResults = response;
+                    this.searchLoading = false;
+                })
+            }
+        }
     }
 </script>
 

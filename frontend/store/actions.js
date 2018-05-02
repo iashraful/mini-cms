@@ -2,6 +2,7 @@ import * as mutationTypes from './mutations-types'
 import pagesApi from '@/services/api-helper/pages'
 import contentApi from '@/services/api-helper/contents'
 import appConfigApi from '@/services/api-helper/app-configs'
+import otherApis from '@/services/api-helper/others'
 
 export default {
     addNewPage(context, page) {
@@ -118,6 +119,17 @@ export default {
             appConfigApi.postAppConfig(data).then((config) => {
                 context.commit(mutationTypes.updateAppConfig, config);
                 success(config);
+            }).then((err) => {
+                fail(err)
+            })
+        })
+    },
+
+    getSearchResults(context, query) {
+        return new Promise((success, fail) => {
+            otherApis.getSearchResult(query).then((data) => {
+                context.commit(mutationTypes.searchResult, data);
+                success(data);
             }).then((err) => {
                 fail(err)
             })

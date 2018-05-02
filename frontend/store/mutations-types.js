@@ -13,3 +13,4 @@ export const deleteContent = "DELETE_CONTENT";
 export const updateAppConfig = 'UPDATE_APP_CONFIGS';
 export const updatePage = 'UPDATED_PAGE';
 export const deletePage = 'DELETE_PAGE';
+export const searchResult = 'SEARCH_RESULTS';

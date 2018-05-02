@@ -23,6 +23,7 @@ const state = {
     contents: [],
     routes: [],
     currentPage: {contents: []},
+    searchResults: [],
 };
 
 export default new Vuex.Store({
