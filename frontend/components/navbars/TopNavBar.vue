@@ -28,7 +28,7 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto" v-if="isAuth">
-                    <li class="nav-item">
+                    <li class="nav-item" style="margin-top: 2px;">
                         <form class="form-inline" v-on:submit.prevent="handleSearchSubmit">
                             <input v-model="searchQuery"
                                    class="form-control mr-sm-2"
