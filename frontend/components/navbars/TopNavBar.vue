@@ -56,7 +56,9 @@
             <h3 class="text-center" v-if="searchLoading">Loading...</h3>
             <div>
                 <ul v-for="item in searchResults">
-                    <li>{{ item.title }}</li>
+                    <li>
+                        <router-link :to="item.path_to_go">{{ item.title }}</router-link>
+                    </li>
                 </ul>
                 <p class="text-center" v-if="searchResults.length <= 0 && !searchLoading">Nothing found.</p>
             </div>
