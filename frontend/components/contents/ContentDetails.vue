@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="content-details">
         <h2 class="text-center">{{ content.title }}</h2>
         <p v-html="content.body"></p>
         <div>
@@ -10,6 +10,7 @@
 
 <script>
     import CommentList from "@/components/comments/CommentList";
+
     export default {
         name: "content-details",
         components: {CommentList},
@@ -31,7 +32,3 @@
         }
     }
 </script>
-
-<style scoped>
-
-</style>

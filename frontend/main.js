@@ -5,6 +5,7 @@ import store from './store'
 import EventBus from '@/config/event-bus'
 // Custom Styles and JS
 import './styles/base/app.main.css'
+import './styles/rich-text-editor/quill-custom.css'
 
 if (process.env.NODE_ENV !== 'production') {
     console.log("Running under Development....")

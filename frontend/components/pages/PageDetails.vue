@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-if="loading" class="mt-5 text-center" style="font-size: 32px">Loading...</div>
-        <div v-if="!loading">
+        <div v-if="!loading" class="page-details">
             <h5>{{ currentPage.name }}</h5>
             <hr class="mt-0"/>
             <div v-if="currentPage.contents.length <= 0" class="text-center">
@@ -63,7 +63,3 @@
         }
     }
 </script>
-
-<style scoped>
-
-</style>

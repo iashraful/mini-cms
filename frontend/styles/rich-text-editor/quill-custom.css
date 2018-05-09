@@ -1,0 +1,965 @@
+/*!
+     * Quill Editor v1.3.6
+     * https://quilljs.com/
+     * Copyright (c) 2014, Jason Chen
+     * Copyright (c) 2013, salesforce.com
+     */
+.ql-container {
+    box-sizing: border-box;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    height: 100%;
+    margin: 0px;
+    position: relative;
+}
+
+.ql-container.ql-disabled .ql-tooltip {
+    visibility: hidden;
+}
+
+.ql-container.ql-disabled .content-details ul[data-checked] > li::before {
+    pointer-events: none;
+}
+
+.ql-clipboard {
+    left: -100000px;
+    height: 1px;
+    overflow-y: hidden;
+    position: absolute;
+    top: 50%;
+}
+
+.ql-clipboard p {
+    margin: 0;
+    padding: 0;
+}
+
+.content-details {
+    box-sizing: border-box;
+    line-height: 1.42;
+    height: 100%;
+    outline: none;
+    overflow-y: auto;
+    padding: 12px 15px;
+    tab-size: 4;
+    -moz-tab-size: 4;
+    text-align: left;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.content-details > * {
+    cursor: text;
+}
+
+.content-details p,
+.content-details ol,
+.content-details ul,
+.content-details pre,
+.content-details blockquote,
+.content-details h1,
+.content-details h2,
+.content-details h3,
+.content-details h4,
+.content-details h5,
+.content-details h6 {
+    margin: 0;
+    padding: 0;
+    counter-reset: list-1 list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9;
+}
+
+.content-details ol,
+.content-details ul {
+    padding-left: 1.5em;
+}
+
+.content-details ol > li,
+.content-details ul > li {
+    list-style-type: none;
+}
+
+.content-details ul > li::before {
+    content: '\2022';
+}
+
+.content-details ul[data-checked=true],
+.content-details ul[data-checked=false] {
+    pointer-events: none;
+}
+
+.content-details ul[data-checked=true] > li *,
+.content-details ul[data-checked=false] > li * {
+    pointer-events: all;
+}
+
+.content-details ul[data-checked=true] > li::before,
+.content-details ul[data-checked=false] > li::before {
+    color: #777;
+    cursor: pointer;
+    pointer-events: all;
+}
+
+.content-details ul[data-checked=true] > li::before {
+    content: '\2611';
+}
+
+.content-details ul[data-checked=false] > li::before {
+    content: '\2610';
+}
+
+.content-details li::before {
+    display: inline-block;
+    white-space: nowrap;
+    width: 1.2em;
+}
+
+.content-details li:not(.ql-direction-rtl)::before {
+    margin-left: -1.5em;
+    margin-right: 0.3em;
+    text-align: right;
+}
+
+.content-details li.ql-direction-rtl::before {
+    margin-left: 0.3em;
+    margin-right: -1.5em;
+}
+
+.content-details ol li:not(.ql-direction-rtl),
+.content-details ul li:not(.ql-direction-rtl) {
+    padding-left: 1.5em;
+}
+
+.content-details ol li.ql-direction-rtl,
+.content-details ul li.ql-direction-rtl {
+    padding-right: 1.5em;
+}
+
+.content-details ol li {
+    counter-reset: list-1 list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9;
+    counter-increment: list-0;
+}
+
+.content-details ol li:before {
+    content: counter(list-0, decimal) '. ';
+}
+
+.content-details ol li.ql-indent-1 {
+    counter-increment: list-1;
+}
+
+.content-details ol li.ql-indent-1:before {
+    content: counter(list-1, lower-alpha) '. ';
+}
+
+.content-details ol li.ql-indent-1 {
+    counter-reset: list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9;
+}
+
+.content-details ol li.ql-indent-2 {
+    counter-increment: list-2;
+}
+
+.content-details ol li.ql-indent-2:before {
+    content: counter(list-2, lower-roman) '. ';
+}
+
+.content-details ol li.ql-indent-2 {
+    counter-reset: list-3 list-4 list-5 list-6 list-7 list-8 list-9;
+}
+
+.content-details ol li.ql-indent-3 {
+    counter-increment: list-3;
+}
+
+.content-details ol li.ql-indent-3:before {
+    content: counter(list-3, decimal) '. ';
+}
+
+.content-details ol li.ql-indent-3 {
+    counter-reset: list-4 list-5 list-6 list-7 list-8 list-9;
+}
+
+.content-details ol li.ql-indent-4 {
+    counter-increment: list-4;
+}
+
+.content-details ol li.ql-indent-4:before {
+    content: counter(list-4, lower-alpha) '. ';
+}
+
+.content-details ol li.ql-indent-4 {
+    counter-reset: list-5 list-6 list-7 list-8 list-9;
+}
+
+.content-details ol li.ql-indent-5 {
+    counter-increment: list-5;
+}
+
+.content-details ol li.ql-indent-5:before {
+    content: counter(list-5, lower-roman) '. ';
+}
+
+.content-details ol li.ql-indent-5 {
+    counter-reset: list-6 list-7 list-8 list-9;
+}
+
+.content-details ol li.ql-indent-6 {
+    counter-increment: list-6;
+}
+
+.content-details ol li.ql-indent-6:before {
+    content: counter(list-6, decimal) '. ';
+}
+
+.content-details ol li.ql-indent-6 {
+    counter-reset: list-7 list-8 list-9;
+}
+
+.content-details ol li.ql-indent-7 {
+    counter-increment: list-7;
+}
+
+.content-details ol li.ql-indent-7:before {
+    content: counter(list-7, lower-alpha) '. ';
+}
+
+.content-details ol li.ql-indent-7 {
+    counter-reset: list-8 list-9;
+}
+
+.content-details ol li.ql-indent-8 {
+    counter-increment: list-8;
+}
+
+.content-details ol li.ql-indent-8:before {
+    content: counter(list-8, lower-roman) '. ';
+}
+
+.content-details ol li.ql-indent-8 {
+    counter-reset: list-9;
+}
+
+.content-details ol li.ql-indent-9 {
+    counter-increment: list-9;
+}
+
+.content-details ol li.ql-indent-9:before {
+    content: counter(list-9, decimal) '. ';
+}
+
+.content-details .ql-indent-1:not(.ql-direction-rtl) {
+    padding-left: 3em;
+}
+
+.content-details li.ql-indent-1:not(.ql-direction-rtl) {
+    padding-left: 4.5em;
+}
+
+.content-details .ql-indent-1.ql-direction-rtl.ql-align-right {
+    padding-right: 3em;
+}
+
+.content-details li.ql-indent-1.ql-direction-rtl.ql-align-right {
+    padding-right: 4.5em;
+}
+
+.content-details .ql-indent-2:not(.ql-direction-rtl) {
+    padding-left: 6em;
+}
+
+.content-details li.ql-indent-2:not(.ql-direction-rtl) {
+    padding-left: 7.5em;
+}
+
+.content-details .ql-indent-2.ql-direction-rtl.ql-align-right {
+    padding-right: 6em;
+}
+
+.content-details li.ql-indent-2.ql-direction-rtl.ql-align-right {
+    padding-right: 7.5em;
+}
+
+.content-details .ql-indent-3:not(.ql-direction-rtl) {
+    padding-left: 9em;
+}
+
+.content-details li.ql-indent-3:not(.ql-direction-rtl) {
+    padding-left: 10.5em;
+}
+
+.content-details .ql-indent-3.ql-direction-rtl.ql-align-right {
+    padding-right: 9em;
+}
+
+.content-details li.ql-indent-3.ql-direction-rtl.ql-align-right {
+    padding-right: 10.5em;
+}
+
+.content-details .ql-indent-4:not(.ql-direction-rtl) {
+    padding-left: 12em;
+}
+
+.content-details li.ql-indent-4:not(.ql-direction-rtl) {
+    padding-left: 13.5em;
+}
+
+.content-details .ql-indent-4.ql-direction-rtl.ql-align-right {
+    padding-right: 12em;
+}
+
+.content-details li.ql-indent-4.ql-direction-rtl.ql-align-right {
+    padding-right: 13.5em;
+}
+
+.content-details .ql-indent-5:not(.ql-direction-rtl) {
+    padding-left: 15em;
+}
+
+.content-details li.ql-indent-5:not(.ql-direction-rtl) {
+    padding-left: 16.5em;
+}
+
+.content-details .ql-indent-5.ql-direction-rtl.ql-align-right {
+    padding-right: 15em;
+}
+
+.content-details li.ql-indent-5.ql-direction-rtl.ql-align-right {
+    padding-right: 16.5em;
+}
+
+.content-details .ql-indent-6:not(.ql-direction-rtl) {
+    padding-left: 18em;
+}
+
+.content-details li.ql-indent-6:not(.ql-direction-rtl) {
+    padding-left: 19.5em;
+}
+
+.content-details .ql-indent-6.ql-direction-rtl.ql-align-right {
+    padding-right: 18em;
+}
+
+.content-details li.ql-indent-6.ql-direction-rtl.ql-align-right {
+    padding-right: 19.5em;
+}
+
+.content-details .ql-indent-7:not(.ql-direction-rtl) {
+    padding-left: 21em;
+}
+
+.content-details li.ql-indent-7:not(.ql-direction-rtl) {
+    padding-left: 22.5em;
+}
+
+.content-details .ql-indent-7.ql-direction-rtl.ql-align-right {
+    padding-right: 21em;
+}
+
+.content-details li.ql-indent-7.ql-direction-rtl.ql-align-right {
+    padding-right: 22.5em;
+}
+
+.content-details .ql-indent-8:not(.ql-direction-rtl) {
+    padding-left: 24em;
+}
+
+.content-details li.ql-indent-8:not(.ql-direction-rtl) {
+    padding-left: 25.5em;
+}
+
+.content-details .ql-indent-8.ql-direction-rtl.ql-align-right {
+    padding-right: 24em;
+}
+
+.content-details li.ql-indent-8.ql-direction-rtl.ql-align-right {
+    padding-right: 25.5em;
+}
+
+.content-details .ql-indent-9:not(.ql-direction-rtl) {
+    padding-left: 27em;
+}
+
+.content-details li.ql-indent-9:not(.ql-direction-rtl) {
+    padding-left: 28.5em;
+}
+
+.content-details .ql-indent-9.ql-direction-rtl.ql-align-right {
+    padding-right: 27em;
+}
+
+.content-details li.ql-indent-9.ql-direction-rtl.ql-align-right {
+    padding-right: 28.5em;
+}
+
+.content-details .ql-video {
+    display: block;
+    max-width: 100%;
+}
+
+.content-details .ql-video.ql-align-center {
+    margin: 0 auto;
+}
+
+.content-details .ql-video.ql-align-right {
+    margin: 0 0 0 auto;
+}
+
+.content-details .ql-bg-black {
+    background-color: #000;
+}
+
+.content-details .ql-bg-red {
+    background-color: #e60000;
+}
+
+.content-details .ql-bg-orange {
+    background-color: #f90;
+}
+
+.content-details .ql-bg-yellow {
+    background-color: #ff0;
+}
+
+.content-details .ql-bg-green {
+    background-color: #008a00;
+}
+
+.content-details .ql-bg-blue {
+    background-color: #06c;
+}
+
+.content-details .ql-bg-purple {
+    background-color: #93f;
+}
+
+.content-details .ql-color-white {
+    color: #fff;
+}
+
+.content-details .ql-color-red {
+    color: #e60000;
+}
+
+.content-details .ql-color-orange {
+    color: #f90;
+}
+
+.content-details .ql-color-yellow {
+    color: #ff0;
+}
+
+.content-details .ql-color-green {
+    color: #008a00;
+}
+
+.content-details .ql-color-blue {
+    color: #06c;
+}
+
+.content-details .ql-color-purple {
+    color: #93f;
+}
+
+.content-details .ql-font-serif {
+    font-family: Georgia, Times New Roman, serif;
+}
+
+.content-details .ql-font-monospace {
+    font-family: Monaco, Courier New, monospace;
+}
+
+.content-details .ql-size-small {
+    font-size: 0.75em;
+}
+
+.content-details .ql-size-large {
+    font-size: 1.5em;
+}
+
+.content-details .ql-size-huge {
+    font-size: 2.5em;
+}
+
+.content-details .ql-direction-rtl {
+    direction: rtl;
+    text-align: inherit;
+}
+
+.content-details .ql-align-center {
+    text-align: center;
+}
+
+.content-details .ql-align-justify {
+    text-align: justify;
+}
+
+.content-details .ql-align-right {
+    text-align: right;
+}
+
+.content-details.ql-blank::before {
+    color: rgba(0, 0, 0, 0.6);
+    content: attr(data-placeholder);
+    font-style: italic;
+    left: 15px;
+    pointer-events: none;
+    position: absolute;
+    right: 15px;
+}
+
+/* Page details Part */
+
+.page-details p,
+.page-details ol,
+.page-details ul,
+.page-details pre,
+.page-details blockquote,
+.page-details h1,
+.page-details h2,
+.page-details h3,
+.page-details h4,
+.page-details h5,
+.page-details h6 {
+    margin: 0;
+    padding: 0;
+    counter-reset: list-1 list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9;
+}
+
+.page-details ol,
+.page-details ul {
+    padding-left: 1.5em;
+}
+
+.page-details ol > li,
+.page-details ul > li {
+    list-style-type: none;
+}
+
+.page-details ul > li::before {
+    content: '\2022';
+}
+
+.page-details ul[data-checked=true],
+.page-details ul[data-checked=false] {
+    pointer-events: none;
+}
+
+.page-details ul[data-checked=true] > li *,
+.page-details ul[data-checked=false] > li * {
+    pointer-events: all;
+}
+
+.page-details ul[data-checked=true] > li::before,
+.page-details ul[data-checked=false] > li::before {
+    color: #777;
+    cursor: pointer;
+    pointer-events: all;
+}
+
+.page-details ul[data-checked=true] > li::before {
+    content: '\2611';
+}
+
+.page-details ul[data-checked=false] > li::before {
+    content: '\2610';
+}
+
+.page-details li::before {
+    display: inline-block;
+    white-space: nowrap;
+    width: 1.2em;
+}
+
+.page-details li:not(.ql-direction-rtl)::before {
+    margin-left: -1.5em;
+    margin-right: 0.3em;
+    text-align: right;
+}
+
+.page-details li.ql-direction-rtl::before {
+    margin-left: 0.3em;
+    margin-right: -1.5em;
+}
+
+.page-details ol li:not(.ql-direction-rtl),
+.page-details ul li:not(.ql-direction-rtl) {
+    padding-left: 1.5em;
+}
+
+.page-details ol li.ql-direction-rtl,
+.page-details ul li.ql-direction-rtl {
+    padding-right: 1.5em;
+}
+
+.page-details ol li {
+    counter-reset: list-1 list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9;
+    counter-increment: list-0;
+}
+
+.page-details ol li:before {
+    content: counter(list-0, decimal) '. ';
+}
+
+.page-details ol li.ql-indent-1 {
+    counter-increment: list-1;
+}
+
+.page-details ol li.ql-indent-1:before {
+    content: counter(list-1, lower-alpha) '. ';
+}
+
+.page-details ol li.ql-indent-1 {
+    counter-reset: list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9;
+}
+
+.page-details ol li.ql-indent-2 {
+    counter-increment: list-2;
+}
+
+.page-details ol li.ql-indent-2:before {
+    content: counter(list-2, lower-roman) '. ';
+}
+
+.page-details ol li.ql-indent-2 {
+    counter-reset: list-3 list-4 list-5 list-6 list-7 list-8 list-9;
+}
+
+.page-details ol li.ql-indent-3 {
+    counter-increment: list-3;
+}
+
+.page-details ol li.ql-indent-3:before {
+    content: counter(list-3, decimal) '. ';
+}
+
+.page-details ol li.ql-indent-3 {
+    counter-reset: list-4 list-5 list-6 list-7 list-8 list-9;
+}
+
+.page-details ol li.ql-indent-4 {
+    counter-increment: list-4;
+}
+
+.page-details ol li.ql-indent-4:before {
+    content: counter(list-4, lower-alpha) '. ';
+}
+
+.page-details ol li.ql-indent-4 {
+    counter-reset: list-5 list-6 list-7 list-8 list-9;
+}
+
+.page-details ol li.ql-indent-5 {
+    counter-increment: list-5;
+}
+
+.page-details ol li.ql-indent-5:before {
+    content: counter(list-5, lower-roman) '. ';
+}
+
+.page-details ol li.ql-indent-5 {
+    counter-reset: list-6 list-7 list-8 list-9;
+}
+
+.page-details ol li.ql-indent-6 {
+    counter-increment: list-6;
+}
+
+.page-details ol li.ql-indent-6:before {
+    content: counter(list-6, decimal) '. ';
+}
+
+.page-details ol li.ql-indent-6 {
+    counter-reset: list-7 list-8 list-9;
+}
+
+.page-details ol li.ql-indent-7 {
+    counter-increment: list-7;
+}
+
+.page-details ol li.ql-indent-7:before {
+    content: counter(list-7, lower-alpha) '. ';
+}
+
+.page-details ol li.ql-indent-7 {
+    counter-reset: list-8 list-9;
+}
+
+.page-details ol li.ql-indent-8 {
+    counter-increment: list-8;
+}
+
+.page-details ol li.ql-indent-8:before {
+    content: counter(list-8, lower-roman) '. ';
+}
+
+.page-details ol li.ql-indent-8 {
+    counter-reset: list-9;
+}
+
+.page-details ol li.ql-indent-9 {
+    counter-increment: list-9;
+}
+
+.page-details ol li.ql-indent-9:before {
+    content: counter(list-9, decimal) '. ';
+}
+
+.page-details .ql-indent-1:not(.ql-direction-rtl) {
+    padding-left: 3em;
+}
+
+.page-details li.ql-indent-1:not(.ql-direction-rtl) {
+    padding-left: 4.5em;
+}
+
+.page-details .ql-indent-1.ql-direction-rtl.ql-align-right {
+    padding-right: 3em;
+}
+
+.page-details li.ql-indent-1.ql-direction-rtl.ql-align-right {
+    padding-right: 4.5em;
+}
+
+.page-details .ql-indent-2:not(.ql-direction-rtl) {
+    padding-left: 6em;
+}
+
+.page-details li.ql-indent-2:not(.ql-direction-rtl) {
+    padding-left: 7.5em;
+}
+
+.page-details .ql-indent-2.ql-direction-rtl.ql-align-right {
+    padding-right: 6em;
+}
+
+.page-details li.ql-indent-2.ql-direction-rtl.ql-align-right {
+    padding-right: 7.5em;
+}
+
+.page-details .ql-indent-3:not(.ql-direction-rtl) {
+    padding-left: 9em;
+}
+
+.page-details li.ql-indent-3:not(.ql-direction-rtl) {
+    padding-left: 10.5em;
+}
+
+.page-details .ql-indent-3.ql-direction-rtl.ql-align-right {
+    padding-right: 9em;
+}
+
+.page-details li.ql-indent-3.ql-direction-rtl.ql-align-right {
+    padding-right: 10.5em;
+}
+
+.page-details .ql-indent-4:not(.ql-direction-rtl) {
+    padding-left: 12em;
+}
+
+.page-details li.ql-indent-4:not(.ql-direction-rtl) {
+    padding-left: 13.5em;
+}
+
+.page-details .ql-indent-4.ql-direction-rtl.ql-align-right {
+    padding-right: 12em;
+}
+
+.page-details li.ql-indent-4.ql-direction-rtl.ql-align-right {
+    padding-right: 13.5em;
+}
+
+.page-details .ql-indent-5:not(.ql-direction-rtl) {
+    padding-left: 15em;
+}
+
+.page-details li.ql-indent-5:not(.ql-direction-rtl) {
+    padding-left: 16.5em;
+}
+
+.page-details .ql-indent-5.ql-direction-rtl.ql-align-right {
+    padding-right: 15em;
+}
+
+.page-details li.ql-indent-5.ql-direction-rtl.ql-align-right {
+    padding-right: 16.5em;
+}
+
+.page-details .ql-indent-6:not(.ql-direction-rtl) {
+    padding-left: 18em;
+}
+
+.page-details li.ql-indent-6:not(.ql-direction-rtl) {
+    padding-left: 19.5em;
+}
+
+.page-details .ql-indent-6.ql-direction-rtl.ql-align-right {
+    padding-right: 18em;
+}
+
+.page-details li.ql-indent-6.ql-direction-rtl.ql-align-right {
+    padding-right: 19.5em;
+}
+
+.page-details .ql-indent-7:not(.ql-direction-rtl) {
+    padding-left: 21em;
+}
+
+.page-details li.ql-indent-7:not(.ql-direction-rtl) {
+    padding-left: 22.5em;
+}
+
+.page-details .ql-indent-7.ql-direction-rtl.ql-align-right {
+    padding-right: 21em;
+}
+
+.page-details li.ql-indent-7.ql-direction-rtl.ql-align-right {
+    padding-right: 22.5em;
+}
+
+.page-details .ql-indent-8:not(.ql-direction-rtl) {
+    padding-left: 24em;
+}
+
+.page-details li.ql-indent-8:not(.ql-direction-rtl) {
+    padding-left: 25.5em;
+}
+
+.page-details .ql-indent-8.ql-direction-rtl.ql-align-right {
+    padding-right: 24em;
+}
+
+.page-details li.ql-indent-8.ql-direction-rtl.ql-align-right {
+    padding-right: 25.5em;
+}
+
+.page-details .ql-indent-9:not(.ql-direction-rtl) {
+    padding-left: 27em;
+}
+
+.page-details li.ql-indent-9:not(.ql-direction-rtl) {
+    padding-left: 28.5em;
+}
+
+.page-details .ql-indent-9.ql-direction-rtl.ql-align-right {
+    padding-right: 27em;
+}
+
+.page-details li.ql-indent-9.ql-direction-rtl.ql-align-right {
+    padding-right: 28.5em;
+}
+
+.page-details .ql-video {
+    display: block;
+    max-width: 100%;
+}
+
+.page-details .ql-video.ql-align-center {
+    margin: 0 auto;
+}
+
+.page-details .ql-video.ql-align-right {
+    margin: 0 0 0 auto;
+}
+
+.page-details .ql-bg-black {
+    background-color: #000;
+}
+
+.page-details .ql-bg-red {
+    background-color: #e60000;
+}
+
+.page-details .ql-bg-orange {
+    background-color: #f90;
+}
+
+.page-details .ql-bg-yellow {
+    background-color: #ff0;
+}
+
+.page-details .ql-bg-green {
+    background-color: #008a00;
+}
+
+.page-details .ql-bg-blue {
+    background-color: #06c;
+}
+
+.page-details .ql-bg-purple {
+    background-color: #93f;
+}
+
+.page-details .ql-color-white {
+    color: #fff;
+}
+
+.page-details .ql-color-red {
+    color: #e60000;
+}
+
+.page-details .ql-color-orange {
+    color: #f90;
+}
+
+.page-details .ql-color-yellow {
+    color: #ff0;
+}
+
+.page-details .ql-color-green {
+    color: #008a00;
+}
+
+.page-details .ql-color-blue {
+    color: #06c;
+}
+
+.page-details .ql-color-purple {
+    color: #93f;
+}
+
+.page-details .ql-font-serif {
+    font-family: Georgia, Times New Roman, serif;
+}
+
+.page-details .ql-font-monospace {
+    font-family: Monaco, Courier New, monospace;
+}
+
+.page-details .ql-size-small {
+    font-size: 0.75em;
+}
+
+.page-details .ql-size-large {
+    font-size: 1.5em;
+}
+
+.page-details .ql-size-huge {
+    font-size: 2.5em;
+}
+
+.page-details .ql-direction-rtl {
+    direction: rtl;
+    text-align: inherit;
+}
+
+.page-details .ql-align-center {
+    text-align: center;
+}
+
+.page-details .ql-align-justify {
+    text-align: justify;
+}
+
+.page-details .ql-align-right {
+    text-align: right;
+}
+
+.page-details.ql-blank::before {
+    color: rgba(0, 0, 0, 0.6);
+    content: attr(data-placeholder);
+    font-style: italic;
+    left: 15px;
+    pointer-events: none;
+    position: absolute;
+    right: 15px;
+}
