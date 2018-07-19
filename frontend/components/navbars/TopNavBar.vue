@@ -8,35 +8,12 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarColor02">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item active" v-for="item in navItems">
                         <router-link class="nav-link" v-bind:to="item.path"> {{ item.name }}</router-link>
                     </li>
                 </ul>
-                <ul class="navbar-nav ml-auto" v-if="!isAuth">
-                    <li class="nav-item">
-                        <form class="form-inline" v-on:submit.prevent="handleSearchSubmit">
-                            <input v-model="searchQuery"
-                                   class="form-control mr-sm-2"
-                                   type="search" aria-label="Search"
-                                   placeholder="Search"
-                            />
-                        </form>
-                    </li>
-                    <li class="nav-item active">
-                        <router-link class="nav-link" to="/login">Login</router-link>
-                    </li>
-                </ul>
                 <ul class="navbar-nav ml-auto" v-if="isAuth">
-                    <li class="nav-item" style="margin-top: 2px;">
-                        <form class="form-inline">
-                            <input v-model="searchQuery"
-                                   class="form-control mr-sm-2"
-                                   type="search" aria-label="Search"
-                                   placeholder="Search"
-                            />
-                        </form>
-                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                            data-toggle="dropdown"
@@ -52,17 +29,6 @@
                 </ul>
             </div>
         </nav>
-        <div class="search-wrapper" v-if="searchQuery.length > 0">
-            <h3 class="text-center" v-if="searchLoading">Loading...</h3>
-            <div>
-                <ul v-for="item in searchResults">
-                    <li>
-                        <router-link :to="item.path_to_go">{{ item.title }}</router-link>
-                    </li>
-                </ul>
-                <p class="text-center" v-if="searchResults.length <= 0 && !searchLoading">Nothing found.</p>
-            </div>
-        </div>
     </div>
 </template>
 
@@ -75,7 +41,6 @@
         name: "top-nav-bar",
         data() {
             return {
-                searchQuery: "",
                 appName: this.$store.state.appConfig.app_name,
                 isAuth: this.$store.state.isAuthenticated,
                 topNavLogo: store.state.appLogo,
@@ -83,7 +48,6 @@
                 dropdownItems: [],
                 loggedInUser: 'Test User',
                 searchLoading: true,
-                searchResults: [],
             }
         },
         methods: {
@@ -121,9 +85,6 @@
                     }
                 }
             },
-            handleSearchSubmit() {
-                // console.log(this.searchQuery)
-            }
         },
         created() {
             /**
@@ -138,32 +99,12 @@
             this.$bus.$on('EB_ConfigUpdated', () => {
                 this.appName = this.$store.state.appConfig.app_name;
             });
-        },
-        watch: {
-            searchQuery(newVal) {
-                this.searchResults = [];
-                this.searchLoading = true;
-                this.$store.dispatch('getSearchResults', newVal).then((response) => {
-                    this.searchResults = response;
-                    this.searchLoading = false;
-                })
-            }
         }
     }
 </script>
 
 <style scoped>
     .navbar {
-        padding: 0 10px 0 10px !important;
-    }
-
-    .search-wrapper {
-        display: block;
-        min-width: 360px;
-        z-index: 2;
-        position: absolute;
-        background-color: #f2ebf3;
-        right: 4.5rem;
-        padding: .5rem 1.5rem;
+        padding: 0 5rem 0 5rem !important;
     }
 </style>

@@ -39,5 +39,6 @@ for (let i = 0; i < store.state.menus.length; i++) {
 }
 
 export default new Router({
+    // mode: 'history',
     routes: routes
 })
