@@ -1,4 +1,4 @@
-import store from "cms/frontend/store";
+import store from "@/store";
 
 const HEADERS = {
     'Content-Type': 'application/json'

@@ -13,7 +13,7 @@
 </template>
 
 <script>
-    import UiTable from "cms/frontend/components/utils/ui/UiTable";
+    import UiTable from "@/components/utils/ui/UiTable";
 
     export default {
         components: {UiTable},

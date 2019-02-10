@@ -33,8 +33,8 @@
 </template>
 
 <script>
-    import * as mutationTypes from 'cms/frontend/store/mutations-types'
-    import store from 'cms/frontend/store'
+    import * as mutationTypes from '@/store/mutations-types'
+    import store from '@/store'
     import axios from 'axios'
 
     export default {

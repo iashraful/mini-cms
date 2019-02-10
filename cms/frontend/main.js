@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
-import EventBus from 'config/event-bus'
+import EventBus from '@/config/event-bus'
 // Custom Styles and JS
 import './styles/base/app.main.css'
 import './styles/rich-text-editor/quill-custom.css'

@@ -15,16 +15,16 @@
 </template>
 
 <script>
-    import TopNavBar from './components/navbars/TopNavBar'
-    import SideNavBar from './components/navbars/SideNavBar'
-    import AppContent from "components/utils/common/AppContent";
-    import PublicContent from "components/utils/common/PublicContent";
-    import Login from "components/authentications/Login";
-    import AppFooter from "components/navbars/Footer";
-    import PageDetails from "components/pages/PageDetails";
+    import TopNavBar from '@/components/navbars/TopNavBar'
+    import SideNavBar from '@/components/navbars/SideNavBar'
+    import AppContent from "@/components/utils/common/AppContent";
+    import PublicContent from "@/components/utils/common/PublicContent";
+    import Login from "@/components/authentications/Login";
+    import AppFooter from "@/components/navbars/Footer";
+    import PageDetails from "@/components/pages/PageDetails";
 
-    import * as mutationTypes from 'store/mutations-types'
-    import configMenus from 'config/menus'
+    import * as mutationTypes from '@/store/mutations-types'
+    import configMenus from '@/config/menus'
 
     export default {
         name: 'app',

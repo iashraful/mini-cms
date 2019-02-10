@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import mutations from './mutations'
 import actions from './actions'
 import getters from './getters'
-import menuItems from 'cms/frontend/config/menus'
+import menuItems from '../config/menus'
 
 Vue.use(Vuex);
 

@@ -1,8 +1,8 @@
 import * as mutationTypes from './mutations-types'
-import pagesApi from 'cms/frontend/services/api-helper/pages'
-import contentApi from 'cms/frontend/services/api-helper/contents'
-import appConfigApi from 'cms/frontend/services/api-helper/app-configs'
-import otherApis from 'cms/frontend/services/api-helper/others'
+import pagesApi from '../services/api-helper/pages'
+import contentApi from '../services/api-helper/contents'
+import appConfigApi from '../services/api-helper/app-configs'
+import otherApis from '../services/api-helper/others'
 
 export default {
     addNewPage(context, page) {

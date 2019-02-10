@@ -5,7 +5,7 @@
 </template>
 
 <script>
-    import * as mutationTypes from 'cms/frontend/store/mutations-types'
+    import * as mutationTypes from '@/store/mutations-types'
 
     export default {
         name: "sync-menu",

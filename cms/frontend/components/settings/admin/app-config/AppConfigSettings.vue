@@ -1,7 +1,7 @@
 <template src="@/templates/settings/app-config-settings.html"></template>
 
 <script>
-    import AppAlert from "cms/frontend/components/utils/ui/AppAlert";
+    import AppAlert from "@/components/utils/ui/AppAlert";
     import {VueEditor} from 'vue2-editor';
 
     export default {

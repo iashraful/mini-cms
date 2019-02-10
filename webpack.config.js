@@ -21,12 +21,8 @@ if (process.env.NODE_ENV === 'production') {
         })
     )
 }
-var entryFile = [];
-if (process.env.NODE_ENV !== 'production') {
-    entryFile = ['./frontend/main.js', './static/utils/bootstrap.js'];
-} else {
-    entryFile = ['./frontend/main.js'];
-}
+var entryFile = ['./cms/frontend/main.js'];
+
 module.exports = {
     entry: entryFile,
     output: {
@@ -99,7 +95,7 @@ module.exports = {
         extensions: ['.js', '.vue', '.json'],
         alias: {
             'vue$': 'vue/dist/vue.esm.js',
-            '@': resolve('frontend'),
+            '@': resolve('cms/frontend'),
         }
     },
 };

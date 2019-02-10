@@ -8,8 +8,8 @@
 </template>
 
 <script>
-    import ProfileLeftSideView from "cms/frontend/components/user/profile/ProfileLeftSideView";
-    import ProfileContentView from "cms/frontend/components/user/profile/ProfileContentView";
+    import ProfileLeftSideView from "@/components/user/profile/ProfileLeftSideView";
+    import ProfileContentView from "@/components/user/profile/ProfileContentView";
 
     export default {
         name: "Profile",

@@ -7,9 +7,9 @@
 </template>
 
 <script>
-    import AppContent from "utils/common/AppContent"
-    import store from 'cms/frontend/store'
-    import * as mutationTypes from 'cms/frontend/store/mutations-types'
+    import AppContent from "./utils/common/AppContent"
+    import store from '@/store'
+    import * as mutationTypes from '@/store/mutations-types'
 
     export default {
         components: {

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-    import CommentList from "cms/frontend/components/comments/CommentList";
+    import CommentList from "@/components/comments/CommentList";
 
     export default {
         name: "content-details",

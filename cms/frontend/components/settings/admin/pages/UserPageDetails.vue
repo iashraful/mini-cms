@@ -53,7 +53,7 @@
 
 <script>
     import {VueEditor} from 'vue2-editor'
-    import * as enums from 'cms/frontend/config/enums'
+    import * as enums from '@/config/enums'
     import swal from 'sweetalert';
 
     export default {
