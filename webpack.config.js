@@ -8,7 +8,7 @@ function resolve(dir) {
 
 // Directory for deployed assets. It should be within our static files path.
 // Backslash at the end is not required.
-var dist_dir = '/static/dist';
+var distDir = '/static/dist';
 var pluginsList = [
     new BundleTracker({filename: './webpack-stats.json'})
 ];
@@ -30,7 +30,7 @@ if (process.env.NODE_ENV !== 'production') {
 module.exports = {
     entry: entryFile,
     output: {
-        path: path.resolve(__dirname, '.' + dist_dir + '/'),
+        path: path.resolve(__dirname, '.' + distDir + '/'),
         filename: '[name]-bundle.js'
     },
     plugins: pluginsList,
