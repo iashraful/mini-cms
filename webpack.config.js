@@ -1,6 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
-var BundleTracker = require('webpack-bundle-tracker');
+const MinifyPlugin = require("babel-minify-webpack-plugin");
 
 function resolve(dir) {
     return path.join(__dirname, dir)
@@ -8,26 +8,29 @@ function resolve(dir) {
 
 // Directory for deployed assets. It should be within our static files path.
 // Backslash at the end is not required.
-var distDir = '/static/dist';
-var pluginsList = [
-    new BundleTracker({filename: './webpack-stats.json'})
-];
+var distDir = '/cms/static/dist';
+var pluginsList = [];
 if (process.env.NODE_ENV === 'production') {
     pluginsList.push(
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: '"production"'
             }
-        })
+        }),
+        new MinifyPlugin()
     )
 }
-var entryFile = ['./cms/frontend/main.js'];
+var entryFile = {
+    main: './cms/client/main.js',
+    extra: './cms/client/extra-chunks',
+
+};
 
 module.exports = {
     entry: entryFile,
     output: {
         path: path.resolve(__dirname, '.' + distDir + '/'),
-        filename: '[name]-bundle.js'
+        filename: '[name]-bundle.min.js'
     },
     plugins: pluginsList,
     module: {
@@ -95,7 +98,7 @@ module.exports = {
         extensions: ['.js', '.vue', '.json'],
         alias: {
             'vue$': 'vue/dist/vue.esm.js',
-            '@': resolve('cms/frontend'),
+            '@': resolve('cms/client'),
         }
     },
 };

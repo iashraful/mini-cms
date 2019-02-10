@@ -12,11 +12,10 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 from config.db_config import db
-from config.debug import FORCE_STATIC_FILE_SERVING
+from config.debug import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PROJECT_ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -67,7 +66,7 @@ ROOT_URLCONF = 'urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(PROJECT_ROOT_DIR, 'iashraful/mini-cms/cms/frontend')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), os.path.join(BASE_DIR, 'cms/client/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -134,17 +133,17 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = [
-    os.path.join(PROJECT_ROOT_DIR, "iashraful/mini-cms/static"),
+    os.path.join(BASE_DIR, "static"),
 ]
 
-MEDIA_ROOT = os.path.join(PROJECT_ROOT_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-STATIC_ROOT = os.path.join(PROJECT_ROOT_DIR, 'static_root')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 
 # Webpack configuration
 WEBPACK_LOADER = {
     'DEFAULT': {
         'BUNDLE_DIR_NAME': 'dist/',
-        'STATS_FILE': os.path.join(PROJECT_ROOT_DIR, 'iashraful/mini-cms/webpack-stats.json'),
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
     }
 }

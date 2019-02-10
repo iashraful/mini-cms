@@ -5,14 +5,12 @@
   "author": " <>",
   "private": true,
   "scripts": {
-    "lint": "eslint --ext .js,.vue frontend",
+    "lint": "eslint --ext .js,.vue client",
     "dev": "webpack --watch",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
     "axios": "^0.17.1",
-    "bootstrap": "^4.0.0",
-    "jquery": "^3.3.1",
     "popper.js": "^1.12.9",
     "sweetalert": "^2.1.0",
     "vue": "^2.5.17",
@@ -24,6 +22,7 @@
     "babel-core": "^6.0.0",
     "babel-eslint": "^7.0.0",
     "babel-loader": "^6.0.0",
+    "babel-minify-webpack-plugin": "^0.3.1",
     "babel-preset-es2015": "^6.0.0",
     "babel-preset-stage-2": "^6.22.0",
     "cross-env": "^3.0.0",
@@ -39,8 +38,6 @@
     "style-loader": "^0.20.1",
     "vue-loader": "^10.0.0",
     "vue-template-compiler": "^2.1.0",
-    "webpack": "^3.10.0",
-    "webpack-bundle-tracker": "^0.2.0",
-    "webpack-dev-server": "^2.1.0-beta.9"
+    "webpack": "^3.10.0"
   }
 }
