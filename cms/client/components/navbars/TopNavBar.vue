@@ -1,34 +1,57 @@
 <template>
     <div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="/#/">{{ appName }}</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
-                    aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+                   data-target="surveyTopNavbar">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
 
-            <div class="collapse navbar-collapse" id="navbarColor02">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active" v-for="item in navItems">
-                        <router-link class="nav-link" v-bind:to="item.path"> {{ item.name }}</router-link>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto" v-if="isAuth">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            <img src="/static/img/no-user-image.png" width="25" class="rounded-circle"/>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <router-link class="dropdown-item" to="/me">Profile</router-link>
-                            <router-link class="dropdown-item" to="/settings">Settings</router-link>
-                            <router-link class="dropdown-item" to="/logout">Logout</router-link>
-                        </div>
-                    </li>
-                </ul>
+            <div id="surveyTopNavbar" class="navbar-menu">
+                <div class="navbar-start">
+                    <router-link v-for="item in navItems"
+                            class="navbar-item"
+                            :to="item.path"
+                            :key="item.path">
+                        {{item.name}}
+                    </router-link>
+                </div>
             </div>
         </nav>
+
+
+        <!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark">-->
+            <!--<a class="navbar-brand" href="/#/">{{ appName }}</a>-->
+            <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"-->
+                    <!--aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">-->
+                <!--<span class="navbar-toggler-icon"></span>-->
+            <!--</button>-->
+
+            <!--<div class="collapse navbar-collapse" id="navbarColor02">-->
+                <!--<ul class="navbar-nav ml-auto">-->
+                    <!--<li class="nav-item active" v-for="item in navItems">-->
+                        <!--<router-link class="nav-link" v-bind:to="item.path"> {{ item.name }}</router-link>-->
+                    <!--</li>-->
+                <!--</ul>-->
+                <!--<ul class="navbar-nav ml-auto" v-if="isAuth">-->
+                    <!--<li class="nav-item dropdown">-->
+                        <!--<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"-->
+                           <!--data-toggle="dropdown"-->
+                           <!--aria-haspopup="true" aria-expanded="false">-->
+                            <!--<img src="/static/img/no-user-image.png" width="25" class="rounded-circle"/>-->
+                        <!--</a>-->
+                        <!--<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">-->
+                            <!--<router-link class="dropdown-item" to="/me">Profile</router-link>-->
+                            <!--<router-link class="dropdown-item" to="/settings">Settings</router-link>-->
+                            <!--<router-link class="dropdown-item" to="/logout">Logout</router-link>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</nav>-->
     </div>
 </template>
 
@@ -86,7 +109,7 @@
                 }
             },
         },
-        created() {
+        mounted() {
             /**
              * Here I'll parse the name and path of each route.
              * This method will trigger when vue component instance will created.

@@ -1,11 +1,11 @@
 <template>
     <div id="app">
-        <div v-if="loading" class="text-center mx-auto mt-5">
+        <div v-if="loading" class="has-text-centered mx-auto mt-5">
             <img src="/static/img/loading.gif" width="150"/>
         </div>
         <div v-if="!loading">
             <top-nav-bar/>
-            <side-nav-bar v-if="isAuth"/>
+            <!--<side-nav-bar v-if="isAuth"/>-->
             <app-content>
                 <router-view slot="main-content"/>
                 <app-footer slot="main-content"/>

@@ -3,15 +3,16 @@ import App from './App'
 import router from './router'
 import store from './store'
 import EventBus from '@/config/event-bus'
-// Custom Styles and JS
-import './styles/base/app.main.css'
-import './styles/rich-text-editor/quill-custom.css'
+import Buefy from 'buefy'
+import VueSuperCallMethod from 'vue-super-call'
 
 if (process.env.NODE_ENV !== 'production') {
     console.log("Running under Development....")
 }
 
+Vue.use(Buefy)
 Vue.config.productionTip = false;
+Vue.prototype.$super = VueSuperCallMethod;
 Vue.prototype.$bus = EventBus;
 
 router.beforeEach((to, from, next) => {

@@ -20,7 +20,7 @@ let menuItems = [
         submenus: [],
         dropdown_items: [],
         is_dropdown: false,
-        is_hidden: true,
+        is_hidden: false,
         is_main_menu: true,
         auth: true
     },
@@ -32,7 +32,7 @@ let menuItems = [
         submenus: [],
         dropdown_items: [],
         is_dropdown: false,
-        is_hidden: true,
+        is_hidden: false,
         is_main_menu: true,
         auth: true
     },
@@ -92,7 +92,7 @@ let menuItems = [
             }
         ],
         is_dropdown: false,
-        is_hidden: true,
+        is_hidden: false,
         is_main_menu: true,
         auth: true
     },
@@ -104,7 +104,7 @@ let menuItems = [
         submenus: [],
         dropdown_items: [],
         is_dropdown: false,
-        is_hidden: true,
+        is_hidden: false,
         is_main_menu: true,
         auth: false
     },
@@ -115,7 +115,7 @@ let menuItems = [
         component: Logout,
         submenus: [],
         is_dropdown: false,
-        is_hidden: true,
+        is_hidden: false,
         is_main_menu: true,
         auth: true
     },
