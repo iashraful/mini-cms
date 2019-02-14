@@ -1,8 +1,8 @@
 {
   "name": "mini-cms",
   "description": "A simple and lightweight cms for business.",
-  "version": "0.0.1",
-  "author": " <>",
+  "version": "1.0.0",
+  "author": "Ashraful Islam<ashrafulrobin3@gmail.com>",
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.vue client",

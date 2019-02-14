@@ -24,7 +24,7 @@
     import PageDetails from "@/components/pages/PageDetails";
 
     import * as mutationTypes from '@/store/mutations-types'
-    import configMenus from '@/config/menus'
+    import configMenus from '@/router/menus'
 
     export default {
         name: 'app',

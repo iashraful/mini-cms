@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import mutations from './mutations'
 import actions from './actions'
 import getters from './getters'
-import menuItems from '../config/menus'
+import menuItems from '../router/menus'
 
 Vue.use(Vuex);
 

@@ -3,9 +3,9 @@ export const ContentEnum = {
     PUBLISH: {value: 1, name: 'Published', code: 'PSH'},
     ARCHIVE: {value: 2, name: 'Archived', code: 'AVE'},
     props: {
-        0: {name: "Draft", value: 0, code: "DFT"},
-        1: {name: "Published", value: 1, code: "PSH"},
-        2: {name: "Archived", value: 2, code: "AVE"}
+        0: {name: 'Draft', value: 0, code: 'DFT'},
+        1: {name: 'Published', value: 1, code: 'PSH'},
+        2: {name: 'Archived', value: 2, code: 'AVE'}
     }
 };
 
@@ -16,6 +16,6 @@ export const ActionTypeEnum = {
     props: {
         0: {value: 0, name: 'Create', code: 'CRT'},
         1: {value: 1, name: 'Edit', code: 'EDT'},
-        2: {value: 2, name: 'Delete', code: 'DLT'},
+        2: {value: 2, name: 'Delete', code: 'DLT'}
     }
 };
