@@ -2,7 +2,7 @@ let path = require('path');
 let webpack = require('webpack');
 const MinifyPlugin = require('babel-minify-webpack-plugin');
 
-function resolve (dir) {
+function resolve(dir) {
     return path.join(__dirname, dir)
 }
 
@@ -22,7 +22,8 @@ if (process.env.NODE_ENV === 'production') {
 }
 let entryFile = {
     main: './cms/client/main.js',
-    extra: './cms/client/extra-chunks'
+    extra: './cms/client/extra-chunks',
+    admin: './cms/client/admin/main.js'
 
 };
 
@@ -48,6 +49,14 @@ module.exports = {
                     }
                     // other vue-loader options go here
                 }
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    'style-loader', // creates style nodes from JS strings
+                    'css-loader', // translates CSS into CommonJS
+                    'sass-loader' // compiles Sass to CSS, using Node Sass by default
+                ]
             },
             {
                 test: /\.js$/,
